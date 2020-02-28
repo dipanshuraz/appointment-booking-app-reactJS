@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  let bool = false;
   return (
     <>
       <div className="container mt-5">
@@ -18,42 +19,51 @@ const Login = () => {
               <div className="col-md-8">
                 <button
                   type="button"
-                  className="btn btn-lg btn-primary border btn-block text-left"
-                >
-                  <i className="fab fa-google" /> Gmail
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-lg btn-secondary border btn-block text-left"
-                >
-                  <i className="fab fa-facebook-f" /> Facebook
-                </button>
-                <button
-                  type="button"
                   className="btn btn-lg btn-light border btn-block text-left"
+                  onClick={() => {
+                    bool = true;
+                  }}
                 >
                   <i className="far fa-envelope" /> Email
                 </button>
-                <form action="">
-                  <div className="form-group">
-                    <input
-                      className="form-control form-control-lg my-2"
-                      type="text"
-                      placeholder="Email"
-                    />
-                    <input
-                      className="form-control form-control-lg my-2"
-                      type="text"
-                      placeholder="Password"
-                    />
+
+                {bool ? (
+                  <form action="">
+                    <div className="form-group">
+                      <input
+                        className="form-control form-control-lg my-2"
+                        type="text"
+                        placeholder="Email"
+                      />
+                      <input
+                        className="form-control form-control-lg my-2"
+                        type="text"
+                        placeholder="Password"
+                      />
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-primary border btn-block text-center"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  <>
                     <button
                       type="button"
-                      className="btn btn-lg btn-light border btn-block text-left"
+                      className="btn btn-lg btn-primary border btn-block text-left"
                     >
-                      <i className="far fa-envelope" /> Login
+                      <i className="fab fa-google" /> Gmail
                     </button>
-                  </div>
-                </form>
+                    <button
+                      type="button"
+                      className="btn btn-lg btn-secondary border btn-block text-left"
+                    >
+                      <i className="fab fa-facebook-f" /> Facebook
+                    </button>
+                  </>
+                )}
               </div>
               <div className="col-md-2 " />
             </div>
