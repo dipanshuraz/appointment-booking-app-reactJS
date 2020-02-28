@@ -36,7 +36,6 @@ export class Login extends Component {
                   >
                     <i className="far fa-envelope" /> Email
                   </button>
-
                   {this.state.bool ? (
                     <form action="">
                       <div className="form-group">
