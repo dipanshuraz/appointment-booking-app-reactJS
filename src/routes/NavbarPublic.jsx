@@ -18,17 +18,12 @@ const NavBar = ({ location: { pathname } }) => {
         <div className="col-md-8">
           <div className="row justify-content-around align-items-center bg-light h-100 text-center text-dark">
             <div className="col-md-3 py-3 nav-hover">
-              <Link style={{ color: "black" }} to="/booking">
-                Appointments
+              <Link style={{ color: "black" }} to="/login"> Login
               </Link>
             </div>
             <div className="col-md-3 py-3 nav-hover">
-              <Link
-                style={{ color: "black" }}
-                className={styles.navHover}
-                to="/booking"
-              >
-                Extra
+              <Link style={{ color: "black" }} to="/register">
+                Register
               </Link>
             </div>
 
@@ -52,15 +47,9 @@ const NavBar = ({ location: { pathname } }) => {
             </div>
           </div>
         </div>
-        <div className="col-md bg-dark d-flex justify-content-center align-items-center p-2">
+        <div className="col-md-2 bg-dark d-flex justify-content-center align-items-center p-2">
           User Id
-          {/* This will be fixed with isAuth 
-          <Link style={{ color: "black" }} to="/register"> Login
-            <i className="fa-2x fas fa-user-circle mx-2" />
-          </Link> */}
-          <Link style={{ color: "white" }} to="/login">
-            <i className="fa-2x fas fa-user-circle mx-2" />
-          </Link>
+          <i className="fa-2x fas fa-user-circle mx-2" />
         </div>
       </div>
     </div>
