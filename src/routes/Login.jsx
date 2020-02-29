@@ -15,6 +15,7 @@ export class Login extends Component {
   };
 
   render() {
+    const { bool } = this.state;
     return (
       <>
         <div className="container mt-5">
@@ -36,7 +37,7 @@ export class Login extends Component {
                   >
                     <i className="far fa-envelope" /> Email
                   </button>
-                  {this.state.bool ? (
+                  {bool ? (
                     <form action="">
                       <div className="form-group">
                         <input
@@ -58,21 +59,21 @@ export class Login extends Component {
                       </div>
                     </form>
                   ) : (
-                      <>
-                        <button
-                          type="button"
-                          className="btn btn-lg btn-primary border btn-block text-left"
-                        >
-                          <i className="fab fa-google" /> Gmail
+                    <>
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-primary border btn-block text-left"
+                      >
+                        <i className="fab fa-google" /> Gmail
                       </button>
-                        <button
-                          type="button"
-                          className="btn btn-lg btn-secondary border btn-block text-left"
-                        >
-                          <i className="fab fa-facebook-f" /> Facebook
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-secondary border btn-block text-left"
+                      >
+                        <i className="fab fa-facebook-f" /> Facebook
                       </button>
-                      </>
-                    )}
+                    </>
+                  )}
                 </div>
                 <div className="col-md-2 " />
               </div>

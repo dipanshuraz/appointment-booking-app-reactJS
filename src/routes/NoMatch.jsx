@@ -4,10 +4,12 @@ import "../index.css";
 
 const NoMatch = () => {
   return (
-    <div className="container h-70">
-      <div className="row justify-content-center ">
-        <img src="./images/404.jpg" className="img-fluid" alt="" />
-        <div className="col-md-4 col-sm">
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-8">
+          <img src="./images/404.jpg" className="img-fluid" alt="" />
+        </div>
+        <div className="col-md-5 col-sm">
           <hr />
           <p className="lead text-center">Go To Home</p>
           <hr />
