@@ -19,8 +19,8 @@ const DashboardRoutes = props => {
       <Route path="/dash/reports" render={() => <Reports />} />
     </>
   ) : (
-    <Redirect to="/login" />
-  );
+      <Redirect to="/login" />
+    );
 };
 
 DashboardRoutes.propTypes = {

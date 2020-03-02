@@ -5,8 +5,7 @@ import UserDashboard from "./UserDashboard";
 const Dashboard = () => {
   return (
     <>
-      <div>DASHBOARD HOME</div>
-      <UserDashboard />
+      {/* <UserDashboard /> */}
       <AdminDashboard />
     </>
   );
