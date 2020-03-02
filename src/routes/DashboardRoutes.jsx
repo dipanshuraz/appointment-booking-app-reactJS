@@ -7,6 +7,10 @@ import Settings from "./Dashboard/Settings";
 import Profile from "./Dashboard/Profile";
 import Reports from "./Dashboard/Reports";
 import NavBar from "./Dashboard/NavBar";
+import BookingSlot from "../components/Users/BookingSlot";
+import BookingForm from "../components/Users/BookingForm";
+import BookingPayment from "../components/Users/BookingPayment";
+import BookingConfirmation from "../components/Users/BookingConfirmation";
 
 const DashboardRoutes = props => {
   const { isAuth } = props;
@@ -14,6 +18,19 @@ const DashboardRoutes = props => {
     <>
       <Route path="/dash" render={NavBar} />
       <Route path="/dash" exact render={() => <Dashboard />} />
+      <Route exact path="/dash/book" render={() => <BookingSlot />} />
+      <Route exact path="/dash/userdetail">
+        {" "}
+        <BookingForm />
+      </Route>
+      <Route exact path="/dash/payment">
+        {" "}
+        <BookingPayment />
+      </Route>
+      <Route exact path="/dash/successful">
+        {" "}
+        <BookingConfirmation />
+      </Route>
       <Route path="/dash/settings" render={() => <Settings />} />
       <Route path="/dash/profile" render={() => <Profile />} />
       <Route path="/dash/reports" render={() => <Reports />} />
