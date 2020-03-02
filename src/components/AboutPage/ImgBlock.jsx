@@ -1,24 +1,12 @@
-import React, { Component } from 'react'
+import React from "react";
 
-export class ImgBlock extends Component {
-  constructor(props) {
-    super(props)
+const ImgBlock = props => {
+  const { img } = props;
+  return (
+    <div className="col-md-6 col-sm-12 col-lg-6 p-5">
+      <img src={img} className="img-fluid p-5" alt="" />
+    </div>
+  );
+};
 
-    this.state = {
-
-    }
-  }
-
-  render() {
-
-    const { img } = this.props
-    console.log(img)
-    return (
-      <div className="col-md-6 col-sm-12 col-lg-6 p-5">
-        <img src={img} className='img-fluid' alt="" />
-      </div>
-    )
-  }
-}
-
-export default ImgBlock
+export default ImgBlock;
