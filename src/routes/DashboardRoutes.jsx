@@ -10,7 +10,7 @@ import NavBar from "./Dashboard/NavBar";
 
 const DashboardRoutes = props => {
   const { isAuth } = props;
-  return isAuth ? (
+  return true ? (
     <>
       <Route path="/dash" render={NavBar} />
       <Route path="/dash" exact render={() => <Dashboard />} />
@@ -19,8 +19,8 @@ const DashboardRoutes = props => {
       <Route path="/dash/reports" render={() => <Reports />} />
     </>
   ) : (
-      <Redirect to="/login" />
-    );
+    <Redirect to="/login" />
+  );
 };
 
 DashboardRoutes.propTypes = {

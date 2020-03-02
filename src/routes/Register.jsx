@@ -1,27 +1,28 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Register extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       bool: false
-    }
+    };
   }
+
   onClickEmail = () => {
     this.setState(prev => ({ bool: !prev.bool }));
   };
 
   render() {
-    const { bool } = this.state
+    const { bool } = this.state;
     return (
       <>
         <div className="container mt-5">
           <button type="button" className="btn btn-light border btn-sm my-3">
-            <Link to="/dash">
-              <i className="fas fa-arrow-left border rounded-circle" /> GOTO
-              DASHBOARD
+            <Link to="/">
+              <i className="fas fa-arrow-left border rounded-circle" />{" "}
+              <span className="text-dark">Landing Page</span>
             </Link>
           </button>
           <div className="row">
@@ -49,7 +50,10 @@ export class Register extends Component {
                           type="text"
                           placeholder="Email"
                         />
-                        <select class="form-control form-control-lg my-2" id="exampleFormControlSelect1">
+                        <select
+                          className="form-control form-control-lg my-2"
+                          id="exampleFormControlSelect1"
+                        >
                           <option value="">Select Type</option>
                           <option>Admin</option>
                           <option>User</option>
@@ -68,21 +72,21 @@ export class Register extends Component {
                       </div>
                     </form>
                   ) : (
-                      <>
-                        <button
-                          type="button"
-                          className="btn btn-lg btn-primary border btn-block text-left"
-                        >
-                          <i className="fab fa-google" /> Gmail
+                    <>
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-primary border btn-block text-left"
+                      >
+                        <i className="fab fa-google" /> Gmail
                       </button>
-                        <button
-                          type="button"
-                          className="btn btn-lg btn-secondary border btn-block text-left"
-                        >
-                          <i className="fab fa-facebook-f" /> Facebook
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-secondary border btn-block text-left"
+                      >
+                        <i className="fab fa-facebook-f" /> Facebook
                       </button>
-                      </>
-                    )}
+                    </>
+                  )}
                 </div>
                 <div className="col-md-2 " />
               </div>
@@ -93,8 +97,8 @@ export class Register extends Component {
           </div>
         </div>
       </>
-    )
+    );
   }
 }
 
-export default Register
+export default Register;

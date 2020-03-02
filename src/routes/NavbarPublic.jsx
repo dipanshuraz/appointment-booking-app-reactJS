@@ -18,7 +18,8 @@ const NavBar = ({ location: { pathname } }) => {
         <div className="col-md-8">
           <div className="row justify-content-around align-items-center bg-light h-100 text-center text-dark">
             <div className="col-md-3 py-3 nav-hover">
-              <Link style={{ color: "black" }} to="/login"> Login
+              <Link style={{ color: "black" }} to="/login">
+                Login
               </Link>
             </div>
             <div className="col-md-3 py-3 nav-hover">
