@@ -14,7 +14,7 @@ import BookingConfirmation from "../components/Users/BookingConfirmation";
 
 const DashboardRoutes = props => {
   const { isAuth } = props;
-  return true ? (
+  return isAuth ? (
     <>
       <Route path="/dash" render={NavBar} />
       <Route path="/dash" exact render={() => <Dashboard />} />
@@ -36,8 +36,8 @@ const DashboardRoutes = props => {
       <Route path="/dash/reports" render={() => <Reports />} />
     </>
   ) : (
-    <Redirect to="/login" />
-  );
+      <Redirect to="/login" />
+    );
 };
 
 DashboardRoutes.propTypes = {
