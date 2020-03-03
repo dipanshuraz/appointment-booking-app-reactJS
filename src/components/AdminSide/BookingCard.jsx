@@ -1,7 +1,17 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class BookingCard extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+
+    }
+  }
+
   render() {
+    const { type, venue } = this.props
     return (
       <div className="container border w-100 my-3 p-3">
         <div className="row text-center">
@@ -12,13 +22,15 @@ export class BookingCard extends Component {
         <div className="row">
           <div className="col-md-4">
             <i className="fas fa-rupee-sign mx-2" />
-            Online
+            {venue}
           </div>
           <div className="col-md-4">One to One</div>
           <div className="col-md-2">
-            <button className="btn btn-block btn-outline-danger btn-block btn-sm ">
-              Cancel
-            </button>
+            <Link className="" to="/dash/cancelslots">
+              <button className="btn btn-block btn-outline-danger btn-block btn-sm ">
+                {type}
+              </button>
+            </Link>
           </div>
         </div>
       </div>
