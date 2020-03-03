@@ -30,11 +30,7 @@ const AccountSetting = () => {
             </div>
           </li>
           <li className="nav-item">
-            <div
-              data-target="#edit"
-              data-toggle="tab"
-              className="nav-link h2"
-            >
+            <div data-target="#edit" data-toggle="tab" className="nav-link h2">
               Edit
             </div>
           </li>
