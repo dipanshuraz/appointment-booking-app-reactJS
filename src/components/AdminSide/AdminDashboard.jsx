@@ -1,5 +1,6 @@
 import React from "react";
-import BookingCard from "../../components/others/BookingCard";
+import { Link } from "react-router-dom";
+import BookingCard from "./BookingCard";
 
 const AdminDashboard = () => {
   return (
@@ -8,11 +9,17 @@ const AdminDashboard = () => {
       <div className="row">
         <div className="col-md-6">
           <p className="lead display-4 text-center my-3">Booked</p>
-          <BookingCard />
-          <BookingCard />
+          <BookingCard type={"cancel"} venue={"online"} />
+          <BookingCard type={"cancel"} venue={"venue"} />
+          <BookingCard type={"cancel"} venue={"online"} />
+
+          <p className="lead display-4 text-center my-3">Open Slots</p>
+          <BookingCard type={"delete"} venue={"online"} />
+          <BookingCard type={"delete"} venue={"venues"} />
+          <BookingCard type={"delete"} venue={"online"} />
         </div>
         <div className="col-md-6">
-          <p className="display-4 text-center my-4">Open Slots</p>
+          <p className="display-4 text-center my-4">Create Slots</p>
 
           <div className="row card m-3 border p-2 align-items-center text-dark">
             <h4 className="card-title">
@@ -21,9 +28,11 @@ const AdminDashboard = () => {
             <div className="col-md-8 text-center">
               <h1>Group Meet</h1>
             </div>
-            <button className="btn-outline-success btn-block py-2">
-              Create
-            </button>
+            <Link to="/dash/createtwo" className="w-100">
+              <button className="btn-outline-success btn-block py-2">
+                Create
+              </button>
+            </Link>
           </div>
           <div className="row card m-3 border p-2 align-items-center text-dark">
             <h4 className="card-title">
@@ -32,9 +41,13 @@ const AdminDashboard = () => {
             <div className="col-md-8 text-center">
               <h1>One on One Meet</h1>
             </div>
-            <button className="btn-outline-success btn-block py-2">
-              Create
-            </button>
+
+
+            <Link to="/dash/createone" className="w-100">
+              <button className="btn-outline-success btn-block py-2">
+                Create
+              </button>
+            </Link>
           </div>
         </div>
       </div>
