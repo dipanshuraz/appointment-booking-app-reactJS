@@ -49,8 +49,10 @@ const NavBar = ({ location: { pathname } }) => {
           </div>
         </div>
         <div className="col-md-2 bg-dark d-flex justify-content-center align-items-center p-2">
-          User Id
-          <i className="fa-2x fas fa-user-circle mx-2" />
+          <Link to="/setting">
+            User Id
+            <i className="fa-2x fas fa-user-circle mx-2" />
+          </Link>
         </div>
       </div>
     </div>
