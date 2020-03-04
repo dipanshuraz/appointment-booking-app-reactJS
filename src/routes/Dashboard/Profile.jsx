@@ -17,7 +17,7 @@ const Profile = () => {
               <input type="file" id="file" className="custom-file-input" />
               <span className="custom-file-control border border-dark btn btn-light">
                 Choose file
-         </span>
+              </span>
             </label>
           </div>
         </div>
@@ -27,9 +27,8 @@ const Profile = () => {
           <h4 className="my-5">shivansh@gmail.com</h4>
         </div>
       </div>
-
     </div>
-  )
+  );
 };
 
 export default Profile;

@@ -10,34 +10,25 @@ const Settings = () => {
           <div className="form-group row">
             <label className="col-lg-3 col-form-label form-control-label">
               First name
-           </label>
+            </label>
             <div className="col-lg-9">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="John"
-              />
+              <input className="form-control" type="text" placeholder="John" />
             </div>
           </div>
 
           <div className="form-group row">
-
             <label className="col-lg-3 col-form-label form-control-label">
               Last name
             </label>
 
             <div className="col-lg-9">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Smith"
-              />
+              <input className="form-control" type="text" placeholder="Smith" />
             </div>
           </div>
           <div className="form-group row">
             <label className="col-lg-3 col-form-label form-control-label">
               Email
-                    </label>
+            </label>
             <div className="col-lg-9">
               <input
                 className="form-control"
@@ -69,7 +60,7 @@ const Settings = () => {
           <div className="form-group row">
             <label className="col-lg-3 col-form-label form-control-label">
               Password
-                    </label>
+            </label>
             <div className="col-lg-9">
               <input className="form-control" type="password" />
             </div>
@@ -77,7 +68,7 @@ const Settings = () => {
           <div className="form-group row">
             <label className="col-lg-3 col-form-label form-control-label">
               Confirm password
-                    </label>
+            </label>
             <div className="col-lg-9">
               <input className="form-control" type="password" />
             </div>
@@ -99,7 +90,8 @@ const Settings = () => {
           </div>
         </form>
       </div>
-    </div>)
+    </div>
+  );
 };
 
 export default Settings;

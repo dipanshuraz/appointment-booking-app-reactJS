@@ -12,7 +12,8 @@ const Reports = () => {
         <h2>Total Amount Earned: </h2>
         <h2 className="text-danger">₹100000 </h2>
       </div>
-    </div>)
+    </div>
+  );
 };
 
 export default Reports;
