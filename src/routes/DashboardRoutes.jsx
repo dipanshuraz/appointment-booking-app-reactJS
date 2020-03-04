@@ -18,7 +18,7 @@ import CancelSlots from "../components/AdminSide/CancelSlots";
 
 const DashboardRoutes = props => {
   const { isAuth } = props;
-  return isAuth ? (
+  return true ? (
     <>
       <Route path="/dash" render={NavBar} />
       <Route path="/dash" exact render={() => <Dashboard />} />
