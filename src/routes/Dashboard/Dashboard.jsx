@@ -1,8 +1,7 @@
 import React from "react";
 
-import AdminDashboard from "./AdminDashboard";
+import AdminDashboard from "../../components/AdminSide/AdminDashboard";
 import UserDashboard from "../../components/Users/UserDashboard";
-import AccountSetting from "../../components/AccountSetting";
 
 
 const Dashboard = () => {
@@ -11,7 +10,6 @@ const Dashboard = () => {
       <AdminDashboard />
       {/* <UserDashboard /> */}
 
-      {/* <AccountSetting /> */}
 
     </>
   );

@@ -12,10 +12,7 @@ export class CreateSlot2 extends Component {
             <form action="">
               <div className="form">
                 <div className="form-group">
-                  <label htmlFor="">
-                    Name :
-
-                  </label>
+                  <label htmlFor="">Name :</label>
                   <input
                     type="text"
                     className="form-control"
@@ -23,10 +20,7 @@ export class CreateSlot2 extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">
-                    Duration :
-
-                  </label>
+                  <label htmlFor="">Duration :</label>
                   <input
                     type="text"
                     className="form-control"
@@ -34,10 +28,7 @@ export class CreateSlot2 extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">
-                    Members :
-
-                  </label>
+                  <label htmlFor="">Members :</label>
                   <input
                     type="text"
                     className="form-control"
@@ -45,10 +36,7 @@ export class CreateSlot2 extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">
-                    Active Slots :
-
-                  </label>
+                  <label htmlFor="">Active Slots :</label>
                   <input
                     type="text"
                     className="form-control"
@@ -56,10 +44,7 @@ export class CreateSlot2 extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">
-                    Price :
-
-                  </label>
+                  <label htmlFor="">Price :</label>
                   <input
                     type="text"
                     className="form-control"
@@ -67,11 +52,7 @@ export class CreateSlot2 extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">
-                    {" "}
-                    Venue :
-
-                  </label>
+                  <label htmlFor=""> Venue :</label>
                   <input
                     type="text"
                     className="form-control"
@@ -79,11 +60,7 @@ export class CreateSlot2 extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">
-
-                    Date :
-
-                  </label>
+                  <label htmlFor="">Date :</label>
                   <input type="Date" className="form-control" />
                 </div>
               </div>

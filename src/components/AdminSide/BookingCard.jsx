@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 
 export class BookingCard extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {
-
-    }
+    this.state = {};
   }
 
   render() {
-    const { type, venue } = this.props
+    const { type, venue } = this.props;
     return (
       <div className="container border w-100 my-3 p-3">
         <div className="row text-center">

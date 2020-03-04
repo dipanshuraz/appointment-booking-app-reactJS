@@ -9,14 +9,14 @@ const AdminDashboard = () => {
       <div className="row">
         <div className="col-md-6">
           <p className="lead display-4 text-center my-3">Booked</p>
-          <BookingCard type={"cancel"} venue={"online"} />
-          <BookingCard type={"cancel"} venue={"venue"} />
-          <BookingCard type={"cancel"} venue={"online"} />
+          <BookingCard type="cancel" venue="online" />
+          <BookingCard type="cancel" venue="venue" />
+          <BookingCard type="cancel" venue="online" />
 
           <p className="lead display-4 text-center my-3">Open Slots</p>
-          <BookingCard type={"delete"} venue={"online"} />
-          <BookingCard type={"delete"} venue={"venues"} />
-          <BookingCard type={"delete"} venue={"online"} />
+          <BookingCard type="delete" venue="online" />
+          <BookingCard type="delete" venue="venues" />
+          <BookingCard type="delete" venue="online" />
         </div>
         <div className="col-md-6">
           <p className="display-4 text-center my-4">Create Slots</p>
@@ -41,7 +41,6 @@ const AdminDashboard = () => {
             <div className="col-md-8 text-center">
               <h1>One on One Meet</h1>
             </div>
-
 
             <Link to="/dash/createone" className="w-100">
               <button className="btn-outline-success btn-block py-2">
