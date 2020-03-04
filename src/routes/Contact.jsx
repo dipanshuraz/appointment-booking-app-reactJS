@@ -1,20 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export class Contact extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      contactName: '',
-      contactEmail: '',
-      contactSubject: '',
-      contactMessage: ''
-    }
+      contactName: "",
+      contactEmail: "",
+      contactSubject: "",
+      contactMessage: ""
+    };
   }
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value }, () => console.log(this.state))
-  }
+    this.setState({ [e.target.name]: e.target.value }, () =>
+      console.log(this.state)
+    );
+  };
 
   render() {
     return (
@@ -25,7 +27,8 @@ export class Contact extends Component {
           <div className="col-md-6">
             <img src="./images/mail.webp" className="img-fluid" alt="" />
             <p>
-              We look forward to connecting! Just tell us a little about yourself.
+              We look forward to connecting! Just tell us a little about
+              yourself.
             </p>
           </div>
 
@@ -36,7 +39,7 @@ export class Contact extends Component {
                   className="form-control form-control-lg my-2"
                   type="text"
                   placeholder="Name"
-                  name='contactName'
+                  name="contactName"
                   value={this.state.contactName}
                   onChange={this.handleChange}
                 />
@@ -44,7 +47,7 @@ export class Contact extends Component {
                   className="form-control form-control-lg my-2"
                   type="text"
                   placeholder="Email"
-                  name='contactEmail'
+                  name="contactEmail"
                   value={this.state.contactEmail}
                   onChange={this.handleChange}
                 />
@@ -52,7 +55,7 @@ export class Contact extends Component {
                   className="form-control form-control-lg my-2"
                   type="text"
                   placeholder="Subject"
-                  name='contactSubject'
+                  name="contactSubject"
                   value={this.state.contactSubject}
                   onChange={this.handleChange}
                 />
@@ -60,7 +63,7 @@ export class Contact extends Component {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name='contactMessage'
+                  name="contactMessage"
                   value={this.state.contactMessage}
                   onChange={this.handleChange}
                 />
@@ -91,7 +94,7 @@ export class Contact extends Component {
         </div>
       </div>
     );
-  };
+  }
 }
 
-export default Contact
+export default Contact;

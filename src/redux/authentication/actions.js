@@ -40,25 +40,31 @@ export const loginUserFailure = payload => ({
 //   };
 // };
 
-export const loginUser = (payload) => dispatch => {
-  console.log(payload, "Hello")
-  dispatch(loginUserRequest())
-  axios.get("http://localhost:4000/users").then(res => {
-    let users = res.data
-    let getUser = users.find(user => {
-      if (user.user_email === payload.log_email && user.user_pass === payload.log_pass && user.user_type === payload.log_type) {
-        return user
+export const loginUser = payload => dispatch => {
+  console.log(payload, "Hello");
+  dispatch(loginUserRequest());
+  axios
+    .get("http://localhost:4000/users")
+    .then(res => {
+      const users = res.data;
+      const getUser = users.find(user => {
+        if (
+          user.user_email === payload.log_email &&
+          user.user_pass === payload.log_pass &&
+          user.user_type === payload.log_type
+        ) {
+          return user;
+        }
+      });
+      console.log(getUser);
+      if (getUser !== undefined) {
+        dispatch(loginUserSuccess(getUser));
+      } else {
+        dispatch(loginUserFailure("Try Again"));
       }
     })
-    console.log(getUser);
-    if (getUser !== undefined) {
-      dispatch(loginUserSuccess(getUser))
-
-    } else {
-      dispatch(loginUserFailure('Try Again'))
-    }
-  }).catch(err => dispatch(loginUserFailure(err.message)))
-}
+    .catch(err => dispatch(loginUserFailure(err.message)));
+};
 
 export const logoutUserRequest = payload => ({
   type: LOGOUT_USER_REQUEST,
@@ -95,40 +101,40 @@ export const logoutUser = payload => {
   };
 };
 
-export const registerUserRequest = (payload) => ({
+export const registerUserRequest = payload => ({
   type: REGISTER_USER_REQUEST,
   payload
-})
+});
 
-export const registerUserSuccess = (payload) => ({
+export const registerUserSuccess = payload => ({
   type: REGISTER_USER_SUCCESS,
   payload
-})
+});
 
-export const registerUserFailure = (payload) => ({
+export const registerUserFailure = payload => ({
   type: REGISTER_USER_FAILURE,
   payload
-})
+});
 
-
-export const userRegister = (payload) => dispatch => {
-  console.log(payload)
-  dispatch(registerUserRequest())
+export const userRegister = payload => dispatch => {
+  console.log(payload);
+  dispatch(registerUserRequest());
   axios({
-    url: 'http://localhost:4000/users',
+    url: "http://localhost:4000/users",
     data: payload,
     headers: {
-      "Content-Type": 'application/json'
+      "Content-Type": "application/json"
     },
     method: "POST"
-  }).then(res => {
-    if (res.status == 201) {
-      dispatch(registerUserSuccess(res.status))
-    }
-    console.log(res.data)
-
-  }).catch(err => {
-    dispatch(registerUserFailure(err.message))
-    console.log(err.message)
   })
-}
+    .then(res => {
+      if (res.status == 201) {
+        dispatch(registerUserSuccess(res.status));
+      }
+      console.log(res.data);
+    })
+    .catch(err => {
+      dispatch(registerUserFailure(err.message));
+      console.log(err.message);
+    });
+};

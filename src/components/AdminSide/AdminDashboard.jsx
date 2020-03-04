@@ -45,7 +45,6 @@ const AdminDashboard = () => {
               <h1>One on One Meet</h1>
             </div>
 
-
             <Link to="/dash/createone" className="w-100">
               <button
                 type="submit"

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { userRegister } from '../redux/authentication/actions'
 import { connect } from "react-redux";
-import uniqid from 'uniqid'
+import uniqid from "uniqid";
+import { userRegister } from "../redux/authentication/actions";
+
 export class Register extends Component {
   constructor(props) {
     super(props);
@@ -10,11 +11,11 @@ export class Register extends Component {
     this.state = {
       bool: false,
       regUser: {
-        uniqid: '',
-        user_full_name: '',
-        user_email: '',
-        user_type: '',
-        user_pass: ''
+        uniqid: "",
+        user_full_name: "",
+        user_email: "",
+        user_type: "",
+        user_pass: ""
       }
     };
   }
@@ -23,20 +24,20 @@ export class Register extends Component {
     this.setState(prev => ({ bool: !prev.bool }));
   };
 
-
   handleChange = e => {
-    let obj = { ...this.state.regUser, [e.target.name]: e.target.value }
-    this.setState({ regUser: obj })
-  }
-
+    const obj = { ...this.state.regUser, [e.target.name]: e.target.value };
+    this.setState({ regUser: obj });
+  };
 
   handleClick = () => {
-    this.setState({ ...this.state.regUser, regUser: { uniqid: uniqid() } }, () => {
-      // this.props.userRegister(this.state.regUser)
-      console.log(this.state.regUser);
-
-    })
-  }
+    this.setState(
+      { ...this.state.regUser, regUser: { uniqid: uniqid() } },
+      () => {
+        // this.props.userRegister(this.state.regUser)
+        console.log(this.state.regUser);
+      }
+    );
+  };
 
   render() {
     const { bool } = this.state;
@@ -70,7 +71,7 @@ export class Register extends Component {
                           placeholder="Name"
                           onChange={this.handleChange}
                           value={this.state.regUser.user_full_name}
-                          name='user_full_name'
+                          name="user_full_name"
                         />
                         <input
                           className="form-control form-control-lg my-2"
@@ -78,18 +79,18 @@ export class Register extends Component {
                           placeholder="Email"
                           onChange={this.handleChange}
                           value={this.state.regUser.user_email}
-                          name='user_email'
+                          name="user_email"
                         />
                         <select
                           className="form-control form-control-lg my-2"
                           id="exampleFormControlSelect1"
                           onChange={this.handleChange}
                           value={this.state.regUser.user_type}
-                          name='user_type'
+                          name="user_type"
                         >
                           <option value="">Select Type</option>
-                          <option value='admin'>Admin</option>
-                          <option value='user'>User</option>
+                          <option value="admin">Admin</option>
+                          <option value="user">User</option>
                         </select>
                         <input
                           className="form-control form-control-lg my-2"
@@ -97,7 +98,7 @@ export class Register extends Component {
                           placeholder="Password"
                           onChange={this.handleChange}
                           value={this.state.regUser.user_pass}
-                          name='user_pass'
+                          name="user_pass"
                         />
                         <button
                           type="button"
@@ -109,21 +110,21 @@ export class Register extends Component {
                       </div>
                     </form>
                   ) : (
-                      <>
-                        <button
-                          type="button"
-                          className="btn btn-lg btn-primary border btn-block text-left"
-                        >
-                          <i className="fab fa-google" /> Gmail
+                    <>
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-primary border btn-block text-left"
+                      >
+                        <i className="fab fa-google" /> Gmail
                       </button>
-                        <button
-                          type="button"
-                          className="btn btn-lg btn-secondary border btn-block text-left"
-                        >
-                          <i className="fab fa-facebook-f" /> Facebook
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-secondary border btn-block text-left"
+                      >
+                        <i className="fab fa-facebook-f" /> Facebook
                       </button>
-                      </>
-                    )}
+                    </>
+                  )}
                 </div>
                 <div className="col-md-2 " />
               </div>
@@ -137,12 +138,10 @@ export class Register extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
-
-})
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
   userRegister: payload => userRegister(payload)
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
