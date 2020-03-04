@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { GoogleLogin } from "react-google-login";
 
 class GoogleOauth extends Component {
-  googleResponse = () => {};
+  googleResponse = () => { };
 
   render() {
     return (
