@@ -14,16 +14,13 @@ export class BookingCard extends Component {
       <div className="container border w-100 my-3 p-3">
         <div className="row text-center">
           <div className="col-md-4 ">8 am - 10 pm</div>
-          <div className="col-md-2">100 ₹</div>
-          <div className="col-md-6">Barber</div>
+          <div className="col-md-4">100 ₹</div>
+          <div className="col-md-4">Barber</div>
         </div>
-        <div className="row">
-          <div className="col-md-4">
-            <i className="fas fa-rupee-sign mx-2" />
-            {venue}
-          </div>
+        <div className="row text-center">
+          <div className="col-md-4">{venue}</div>
           <div className="col-md-4">One to One</div>
-          <div className="col-md-2">
+          <div className="col-md-4">
             <Link className="" to="/dash/cancelslots">
               <button className="btn btn-block btn-outline-danger btn-block btn-sm ">
                 {type}

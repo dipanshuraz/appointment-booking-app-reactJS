@@ -29,7 +29,10 @@ const AdminDashboard = () => {
               <h1>Group Meet</h1>
             </div>
             <Link to="/dash/createtwo" className="w-100">
-              <button className="btn-outline-success btn-block py-2">
+              <button
+                type="submit"
+                className="btn-outline-success btn-block py-2"
+              >
                 Create
               </button>
             </Link>
@@ -43,7 +46,10 @@ const AdminDashboard = () => {
             </div>
 
             <Link to="/dash/createone" className="w-100">
-              <button className="btn-outline-success btn-block py-2">
+              <button
+                type="submit"
+                className="btn-outline-success btn-block py-2"
+              >
                 Create
               </button>
             </Link>

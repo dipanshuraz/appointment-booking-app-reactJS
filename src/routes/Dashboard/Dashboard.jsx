@@ -1,15 +1,27 @@
 import React from "react";
 
+import { connect } from "react-redux";
+
 import AdminDashboard from "../../components/AdminSide/AdminDashboard";
 import UserDashboard from "../../components/Users/UserDashboard";
 
-const Dashboard = () => {
+const Dashboard = props => {
   return (
     <>
-      <AdminDashboard />
-      {/* <UserDashboard /> */}
+      {
+        props.user.user_type === "admin" ? (
+          <AdminDashboard />
+        ) : (
+            <UserDashboard />
+          )
+      }
+
     </>
   );
 };
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  user: state.authReducer.user
+});
+
+export default connect(mapStateToProps, null)(Dashboard);
