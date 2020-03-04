@@ -49,14 +49,14 @@ export const loginUser = payload => dispatch => {
       const users = res.data;
       const getUser = users.find(user => {
         if (
-          user.user_email === payload.log_email &&
-          user.user_pass === payload.log_pass &&
-          user.user_type === payload.log_type
+          user.user_email === payload.logEmail &&
+          user.user_pass === payload.logPass &&
+          user.user_type === payload.logType
         ) {
           return user;
         }
       });
-      console.log(getUser);
+
       if (getUser !== undefined) {
         dispatch(loginUserSuccess(getUser));
       } else {

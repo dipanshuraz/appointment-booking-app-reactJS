@@ -31,10 +31,9 @@ export class Register extends Component {
 
   handleClick = () => {
     this.setState(
-      { ...this.state.regUser, regUser: { uniqid: uniqid() } },
+      { regUser: { ...this.state.regUser, uniqid: uniqid() } },
       () => {
-        // this.props.userRegister(this.state.regUser)
-        console.log(this.state.regUser);
+        this.props.userRegister(this.state.regUser);
       }
     );
   };

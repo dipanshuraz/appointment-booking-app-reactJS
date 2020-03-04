@@ -25,7 +25,7 @@ const reducer = (state = initState, action) => {
         isLoading: true
       };
     case LOGIN_USER_SUCCESS:
-      console.log(state.isLoading);
+      console.log(action.payload);
       return {
         ...state,
         isLoading: false,

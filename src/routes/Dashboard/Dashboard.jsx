@@ -1,23 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import AdminDashboard from "../../components/AdminSide/AdminDashboard";
 import UserDashboard from "../../components/Users/UserDashboard";
-import AccountSetting from "../../components/AccountSetting";
-
+// import AccountSetting from "../../components/AccountSetting";
 
 const Dashboard = props => {
+  const { user } = props;
+  console.log(user);
   return (
     <>
-      {
-        props.user.user_type === "admin" ? (
-          <AdminDashboard />
-        ) : (
-            <UserDashboard />
-          )
-      }
-      <AccountSetting />
+      {user.user_type === "admin" ? <AdminDashboard /> : <UserDashboard />}
+      {/* <AccountSetting /> */}
     </>
   );
+};
+
+Dashboard.propTypes = {
+  user: PropTypes.objectOf.isRequired
 };
 
 const mapStateToProps = state => ({

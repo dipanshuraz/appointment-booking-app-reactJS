@@ -8,72 +8,27 @@
       "user_type": "superadmin"
     },
     {
-      "user_full_name": "Deepanshu Prajapati",
-      "user_email": "dipanshuraz2@gmail.com",
+      "uniqid": "k7d845cp",
+      "user_full_name": "Rahul",
+      "user_email": "rahul@demo",
       "user_type": "admin",
       "user_pass": "123",
       "id": 1
     },
     {
-      "user_full_name": "Suyash Mishra",
-      "user_email": "suyash@123",
-      "user_type": "admin",
-      "user_pass": "123",
-      "id": 2
-    },
-    {
-      "user_full_name": "Suyash Mishra",
-      "user_email": "suyash@123",
-      "user_type": "admin",
-      "user_pass": "123",
-      "id": 3
-    },
-    {
-      "user_full_name": "Deepanshu   Prajapati",
-      "user_email": "dipanshuraz2@gmail.com",
-      "user_type": "user",
-      "user_pass": "1",
-      "id": 4
-    },
-    {
-      "user_full_name": "1",
-      "user_email": "1",
-      "user_type": "user",
-      "user_pass": "1",
-      "id": 5
-    },
-    {
-      "user_full_name": "",
-      "user_email": "1",
-      "user_type": "",
-      "user_pass": "",
-      "id": 6
-    },
-    {
+      "uniqid": "k7d89h4c",
       "user_full_name": "a",
       "user_email": "a",
       "user_type": "admin",
       "user_pass": "a",
-      "id": 7
-    },
+      "id": 2
+    }
+  ],
+  "slots": [
     {
-      "user_full_name": "b",
-      "user_email": "b",
-      "user_type": "user",
-      "user_pass": "b",
-      "id": 8
-    },
-    {
-      "uniqid": "k7bxdcs8",
-      "id": 9
-    },
-    {
-      "uniqid": "",
-      "user_full_name": "d",
-      "user_email": "d",
-      "user_type": "admin",
-      "user_pass": "d",
-      "id": 10
+      "name": "ravi",
+      "time": "10 12 PM",
+      "venue": "INDIA"
     }
   ]
 }
