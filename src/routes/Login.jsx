@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-// import uniqid from "uniqid";
 import PropTypes from "prop-types";
 import { loginUser } from "../redux/authentication/actions";
 
@@ -49,7 +48,6 @@ export class Login extends Component {
 
   onClickEmail = () => {
     this.setState(prev => ({ bool: !prev.bool }));
-    // console.log(uniqid());
   };
 
   render() {

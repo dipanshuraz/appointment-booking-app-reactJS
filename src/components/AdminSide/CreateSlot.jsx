@@ -2,7 +2,30 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export class CreateSlot extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      createEvent: {
+        createEventName: "",
+        createActiveSlots: "",
+        createDuration: "",
+        createEventName: "",
+        createEventPrice: "",
+        createEventVenue: ""
+      }
+    };
+  }
+  handleChange = e => {
+    const { createEvent } = this.state;
+    const obj = { ...createEvent, [e.target.name]: e.target.value };
+    this.setState({ createEvent: obj });
+    console.log();
+  };
+
   render() {
+    // var user = localStorage.getItem("logged");
+    // user = JSON.parse(user);
     return (
       <div className="container my-5 ">
         <h1 className="text-center text-secondary">Create One on One Slot</h1>
@@ -17,6 +40,9 @@ export class CreateSlot extends Component {
                     type="text"
                     className="form-control"
                     placeholder="John Doe"
+                    value={this.state.createEvent.createEventName}
+                    onChange={this.handleChange}
+                    name="createEventName"
                   />
                 </div>
                 <div className="form-group">
@@ -25,6 +51,9 @@ export class CreateSlot extends Component {
                     type="text"
                     className="form-control"
                     placeholder="30 min"
+                    value={this.state.createEvent.createDuration}
+                    onChange={this.handleChange}
+                    name="createDuration"
                   />
                 </div>
                 <div className="form-group">
@@ -33,6 +62,9 @@ export class CreateSlot extends Component {
                     type="text"
                     className="form-control"
                     placeholder="0 - 10"
+                    value={this.state.createEvent.createActiveSlots}
+                    onChange={this.handleChange}
+                    name="createActiveSlots"
                   />
                 </div>
                 <div className="form-group">
@@ -41,6 +73,9 @@ export class CreateSlot extends Component {
                     type="text"
                     className="form-control"
                     placeholder="₹ 200 "
+                    value={this.state.createEvent.createEventPrice}
+                    onChange={this.handleChange}
+                    name="createEventPrice"
                   />
                 </div>
                 <div className="form-group">
@@ -49,6 +84,9 @@ export class CreateSlot extends Component {
                     type="text"
                     className="form-control"
                     placeholder="Address"
+                    value={this.state.createEvent.createEventVenue}
+                    onChange={this.handleChange}
+                    name="createEventVenue"
                   />
                 </div>
                 <div className="form-group">

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import uniqid from "uniqid";
 import { userRegister } from "../redux/authentication/actions";
 
 export class Register extends Component {
@@ -11,11 +10,10 @@ export class Register extends Component {
     this.state = {
       bool: false,
       regUser: {
-        uniqid: "",
-        user_full_name: "",
-        user_email: "",
-        user_type: "",
-        user_pass: ""
+        regUsername: "",
+        regEmail: "",
+        regType: "",
+        regPass: ""
       }
     };
   }
@@ -30,12 +28,7 @@ export class Register extends Component {
   };
 
   handleClick = () => {
-    this.setState(
-      { regUser: { ...this.state.regUser, uniqid: uniqid() } },
-      () => {
-        this.props.userRegister(this.state.regUser);
-      }
-    );
+    this.props.userRegister(this.state.regUser);
   };
 
   render() {
@@ -69,23 +62,23 @@ export class Register extends Component {
                           type="text"
                           placeholder="Name"
                           onChange={this.handleChange}
-                          value={this.state.regUser.user_full_name}
-                          name="user_full_name"
+                          value={this.state.regUser.regUsername}
+                          name="regUsername"
                         />
                         <input
                           className="form-control form-control-lg my-2"
                           type="text"
                           placeholder="Email"
                           onChange={this.handleChange}
-                          value={this.state.regUser.user_email}
-                          name="user_email"
+                          value={this.state.regUser.regEmail}
+                          name="regEmail"
                         />
                         <select
                           className="form-control form-control-lg my-2"
                           id="exampleFormControlSelect1"
                           onChange={this.handleChange}
-                          value={this.state.regUser.user_type}
-                          name="user_type"
+                          value={this.state.regUser.regType}
+                          name="regType"
                         >
                           <option value="">Select Type</option>
                           <option value="admin">Admin</option>
@@ -96,8 +89,8 @@ export class Register extends Component {
                           type="text"
                           placeholder="Password"
                           onChange={this.handleChange}
-                          value={this.state.regUser.user_pass}
-                          name="user_pass"
+                          value={this.state.regUser.regPass}
+                          name="regPass"
                         />
                         <button
                           type="button"

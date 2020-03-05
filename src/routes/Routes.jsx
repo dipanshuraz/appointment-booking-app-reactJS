@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import DashboardRoutes from "./DashboardRoutes";
 import Login from "./Login";
@@ -8,8 +8,18 @@ import Contact from "./Contact";
 import Home from "./Home";
 import NavBarPublic from "./NavbarPublic";
 import NoMatch from "./NoMatch";
+import { connect } from "react-redux";
+import { checkLogin } from "../redux/authentication/actions";
 
-const Routes = () => {
+const Routes = ({ checkLogin }) => {
+  useEffect(() => {
+    let user = localStorage.getItem("logged");
+    if (user) {
+      user = JSON.parse(user);
+      checkLogin(user);
+    }
+  }, []);
+
   return (
     <>
       <Route path="/" component={NavBarPublic} />
@@ -25,5 +35,10 @@ const Routes = () => {
     </>
   );
 };
+const mapStateToProps = state => ({});
 
-export default Routes;
+const mapDispatchToProps = dispatch => ({
+  checkLogin: payload => dispatch(checkLogin(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);

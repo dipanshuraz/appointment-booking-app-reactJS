@@ -7,14 +7,16 @@ import {
   LOGOUT_USER_FAILURE,
   REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS,
-  REGISTER_USER_FAILURE
+  REGISTER_USER_FAILURE,
+  CHECK_LOGIN_LOCAL
 } from "./actionTypes";
 
 const initState = {
   isAuth: false,
   isLoading: false,
   error: false,
-  user: {}
+  user: {},
+  allSlots: []
 };
 
 const reducer = (state = initState, action) => {
@@ -26,6 +28,7 @@ const reducer = (state = initState, action) => {
       };
     case LOGIN_USER_SUCCESS:
       console.log(action.payload);
+      localStorage.setItem("logged", JSON.stringify(action.payload));
       return {
         ...state,
         isLoading: false,
@@ -45,11 +48,13 @@ const reducer = (state = initState, action) => {
         isLoading: false,
         error: false
       };
-    case LOGOUT_USER_SUCCESS:
+    case LOGOUT_USER_SUCCESS: {
+      localStorage.clear();
       return {
         ...state,
         isAuth: false
       };
+    }
     case LOGOUT_USER_FAILURE:
       return {
         ...state,
@@ -63,6 +68,7 @@ const reducer = (state = initState, action) => {
         isLoading: true
       };
     case REGISTER_USER_SUCCESS:
+      alert("New User added :)");
       return {
         ...state,
         isLoading: false
@@ -72,6 +78,12 @@ const reducer = (state = initState, action) => {
       return {
         ...state,
         isLoading: false
+      };
+    case CHECK_LOGIN_LOCAL:
+      return {
+        ...state,
+        user: action.payload,
+        isAuth: true
       };
     default:
       return state;

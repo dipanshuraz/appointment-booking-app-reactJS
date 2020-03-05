@@ -1,5 +1,4 @@
 import React from "react";
-
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import AdminDashboard from "../../components/AdminSide/AdminDashboard";
@@ -11,7 +10,7 @@ const Dashboard = props => {
   console.log(user);
   return (
     <>
-      {user.user_type === "admin" ? <AdminDashboard /> : <UserDashboard />}
+      {user.regType === "admin" ? <AdminDashboard /> : <UserDashboard />}
       {/* <AccountSetting /> */}
     </>
   );

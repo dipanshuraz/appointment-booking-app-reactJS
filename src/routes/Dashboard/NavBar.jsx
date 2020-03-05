@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { logoutUser } from "../../redux/authentication/actions";
+import { connect } from "react-redux";
 // import styles from "./DashboardRoutes.module.css";
 
-const NavBar = () => {
+const NavBar = props => {
+  const logOut = () => {
+    console.log("Logged Out");
+    props.logoutUser();
+  };
   return (
     <>
       <div className="container-fluid text-white">
@@ -36,8 +42,22 @@ const NavBar = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-2 bg-dark d-flex justify-content-center align-items-center p-2">
-            User Id
+          <div className="col-md-2 bg-dark d-flex justify-content-center align-items-center p-2  dropdown">
+            <div
+              class="btn text-white"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fas fa-arrow-circle-down"></i> User Id
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button onClick={logOut} class="dropdown-item btn">
+                Logout <i class="fas fa-unlock-alt"></i>
+              </button>
+            </div>
+
             <i className="fa-2x fas fa-user-circle mx-2" />
           </div>
         </div>
@@ -46,4 +66,8 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+// const mapDispatchToProps = dispatch => ({
+//   logoutUser: () => dispatch(logoutUser())
+// });
+
+export default connect(null, { logoutUser })(NavBar);

@@ -1,45 +1,40 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-export class BookingCard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
-  render() {
-    const { type, venue } = this.props;
-    return (
-      <div className="container border w-100 my-3 p-3">
-        <div className="row text-center">
-          <div className="col-md-4 ">8 am - 10 pm</div>
-          <div className="col-md-4">100 ₹</div>
-          <div className="col-md-4">Barber</div>
-        </div>
-        <div className="row text-center">
-          <div className="col-md-4">{venue}</div>
-          <div className="col-md-4">One to One</div>
-          <div className="col-md-4">
+function BookingCard(props) {
+  const { allSlots } = props;
+  return (
+    <>
+      {allSlots.map(elem => {
+        return (
+          <div className="container border w-100 my-3 p-3">
+            <div className="row">
+              <div className="col">
+                <p>Creator : {elem.creator}</p>
+                <p>Event Name: {elem.eventName}</p>
+                <p>Person : {elem.members}</p>
+                <p>Date : {elem.date}</p>
+                <p>Duration : {elem.duration} hr</p>
+                <p>Venue : {elem.venue}</p>
+                <p>Price : Rs {elem.price}</p>
+                <p>Type : {elem.type}</p>
+              </div>
+            </div>
             <Link className="" to="/dash/cancelslots">
               <button className="btn btn-block btn-outline-danger btn-block btn-sm ">
-                {type}
+                Cancel
               </button>
             </Link>
           </div>
-        </div>
-      </div>
-    );
-  }
+        );
+      })}
+    </>
+  );
 }
 
-export default BookingCard;
+const mapStateToProps = state => ({
+  allSlots: state.adminReducer.allSlots
+});
 
-{
-  /* < div className = "col-md-2 bg-light" >
-    <button className='btn btn-block btn-outline-success btn-block btn-sm'>Update</button>
-          </div >
-  <div className="col-md-2">
-   
-  </div> */
-}
+export default connect(mapStateToProps, null)(BookingCard);
