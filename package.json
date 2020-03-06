@@ -20,7 +20,7 @@
     "uniqid": "^5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start & json-server --watch db.json --port 4000",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "cypress open",
     "eject": "react-scripts eject"

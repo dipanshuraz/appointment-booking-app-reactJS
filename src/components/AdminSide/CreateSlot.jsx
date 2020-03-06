@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { createSlot } from "../../redux/Admin/actions";
 
 export class CreateSlot extends Component {
   constructor(props) {
@@ -12,30 +14,78 @@ export class CreateSlot extends Component {
         createDuration: "",
         createEventName: "",
         createEventPrice: "",
-        createEventVenue: ""
+        createEventVenue: "",
+        bookingStatus: "false",
+        createEventType: "",
+        createEventMembers: 1 || "",
+        createEventTime: new Date()
       }
     };
   }
+
   handleChange = e => {
+    var user = localStorage.getItem("logged");
+    user = JSON.parse(user);
+
+    const { regUsername, regEmail, id } = user;
+    const userId = id;
     const { createEvent } = this.state;
-    const obj = { ...createEvent, [e.target.name]: e.target.value };
-    this.setState({ createEvent: obj });
-    console.log();
+    const obj = {
+      ...createEvent,
+      [e.target.name]: e.target.value,
+      regUsername,
+      regEmail,
+      userId
+    };
+    this.setState({ createEvent: obj }, () =>
+      console.log(this.state.createEvent.createSlotDate)
+    );
+  };
+
+  handleClick = () => {
+    this.props.createSlot(this.state.createEvent);
   };
 
   render() {
-    // var user = localStorage.getItem("logged");
-    // user = JSON.parse(user);
     return (
       <div className="container my-5 ">
-        <h1 className="text-center text-secondary">Create One on One Slot</h1>
+        <h1 className="text-center text-secondary">Create Slot</h1>
         <hr />
         <div className="row">
           <div className="col-md-6">
             <form action="">
               <div className="form">
                 <div className="form-group">
-                  <label htmlFor=""> Name :</label>
+                  <label htmlFor=""> EventType :</label>
+                  <select
+                    className="form-control form-control-lg my-2"
+                    id="exampleFormControlSelect1"
+                    onChange={this.handleChange}
+                    value={this.state.createEvent.createEventType}
+                    name="createEventType"
+                  >
+                    <option value="">Select Type</option>
+                    <option value="single">Single</option>
+                    <option value="group">Group</option>
+                  </select>
+                </div>
+                {this.state.createEvent.createEventType == "group" ? (
+                  <div className="form-group">
+                    <label htmlFor=""> Members :</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="0 -10"
+                      value={this.state.createEvent.createEventMembers}
+                      onChange={this.handleChange}
+                      name="createEventMembers"
+                    />
+                  </div>
+                ) : (
+                  ""
+                )}
+                <div className="form-group">
+                  <label htmlFor="">Event Name :</label>
                   <input
                     type="text"
                     className="form-control"
@@ -67,6 +117,7 @@ export class CreateSlot extends Component {
                     name="createActiveSlots"
                   />
                 </div>
+
                 <div className="form-group">
                   <label htmlFor=""> Price :</label>
                   <input
@@ -91,21 +142,37 @@ export class CreateSlot extends Component {
                 </div>
                 <div className="form-group">
                   <label htmlFor=""> Date :</label>
-                  <input type="Date" className="form-control" />
+                  <input
+                    type="Date"
+                    className="form-control"
+                    value={this.state.createEvent.createSlotDate}
+                    onChange={this.handleChange}
+                  />
                 </div>
               </div>
             </form>
           </div>
           <div className="col-md-6 p-5">
-            <div className="w-100 h-100 bg-secondary " />
+            <div className="w-100 h-50 bg-secondary " />
           </div>
         </div>
         <Link to="/dash/confirm">
-          <button className="btn btn-success btn-block">Create</button>
+          <button
+            onClick={this.handleClick}
+            className="btn btn-success btn-block"
+          >
+            Create
+          </button>
         </Link>
       </div>
     );
   }
 }
 
-export default CreateSlot;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  createSlot: payload => dispatch(createSlot(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateSlot);

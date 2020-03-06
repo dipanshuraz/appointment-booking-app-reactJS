@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 import DashboardRoutes from "./DashboardRoutes";
 import Login from "./Login";
 import Register from "./Register";
@@ -8,7 +9,6 @@ import Contact from "./Contact";
 import Home from "./Home";
 import NavBarPublic from "./NavbarPublic";
 import NoMatch from "./NoMatch";
-import { connect } from "react-redux";
 import { checkLogin } from "../redux/authentication/actions";
 
 const Routes = ({ checkLogin }) => {

@@ -35,7 +35,7 @@ export const loginUser = payload => dispatch => {
   return fBaseUsers
     .get()
     .then(query => {
-      let array = [];
+      const array = [];
       query.forEach(doc => {
         array.push({ id: doc.id, ...doc.data() });
       });
@@ -95,7 +95,6 @@ export const registerUserFailure = payload => ({
 });
 
 export const userRegister = payload => dispatch => {
-  console.log(payload);
   dispatch(registerUserRequest());
   fBaseUsers
     .add(payload)
@@ -106,7 +105,6 @@ export const userRegister = payload => dispatch => {
     })
     .catch(err => {
       dispatch(registerUserFailure(err.message));
-      console.log(err.message);
     });
 };
 

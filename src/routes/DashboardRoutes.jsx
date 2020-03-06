@@ -12,7 +12,6 @@ import BookingForm from "../components/Users/BookingForm";
 import BookingPayment from "../components/Users/BookingPayment";
 import BookingConfirmation from "../components/Users/BookingConfirmation";
 import CreateOne from "../components/AdminSide/CreateSlot";
-import CreateTwo from "../components/AdminSide/CreateSlot2";
 import ConfirmSlots from "../components/AdminSide/ConfirmSlots";
 import CancelSlots from "../components/AdminSide/CancelSlots";
 import { fetchSlots } from "../redux/Admin/actions";
@@ -40,7 +39,6 @@ const DashboardRoutes = props => {
         <BookingConfirmation />
       </Route>
       <Route exact path="/dash/createone" component={CreateOne} />
-      <Route exact path="/dash/createtwo" component={CreateTwo} />
       <Route exact path="/dash/confirm" component={ConfirmSlots} />
       <Route exact path="/dash/cancelslots" component={CancelSlots} />
       <Route path="/dash/settings" render={() => <Settings />} />
@@ -61,7 +59,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  fetchSlots: fetchSlots
+  fetchSlots
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardRoutes);

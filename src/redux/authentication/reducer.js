@@ -27,7 +27,6 @@ const reducer = (state = initState, action) => {
         isLoading: true
       };
     case LOGIN_USER_SUCCESS:
-      console.log(action.payload);
       localStorage.setItem("logged", JSON.stringify(action.payload));
       return {
         ...state,
@@ -62,19 +61,16 @@ const reducer = (state = initState, action) => {
         error: true
       };
     case REGISTER_USER_REQUEST:
-      console.log("Req Register");
       return {
         ...state,
         isLoading: true
       };
     case REGISTER_USER_SUCCESS:
-      alert("New User added :)");
       return {
         ...state,
         isLoading: false
       };
     case REGISTER_USER_FAILURE:
-      alert(`${action.payload}  Failed !!!`);
       return {
         ...state,
         isLoading: false

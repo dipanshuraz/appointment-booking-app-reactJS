@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { logoutUser } from "../../redux/authentication/actions";
 import { connect } from "react-redux";
+import { logoutUser } from "../../redux/authentication/actions";
 // import styles from "./DashboardRoutes.module.css";
 
 const NavBar = props => {
@@ -44,17 +44,17 @@ const NavBar = props => {
           </div>
           <div className="col-md-2 bg-dark d-flex justify-content-center align-items-center p-2  dropdown">
             <div
-              class="btn text-white"
+              className="btn text-white"
               id="dropdownMenuButton"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i class="fas fa-arrow-circle-down"></i> User Id
+              <i className="fas fa-arrow-circle-down" /> User Id
             </div>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <button onClick={logOut} class="dropdown-item btn">
-                Logout <i class="fas fa-unlock-alt"></i>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button onClick={logOut} className="dropdown-item btn">
+                Logout <i className="fas fa-unlock-alt" />
               </button>
             </div>
 

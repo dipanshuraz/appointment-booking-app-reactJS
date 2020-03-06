@@ -1,6 +1,9 @@
 import React from "react";
 
 const Profile = () => {
+  var user = localStorage.getItem("logged");
+  user = JSON.parse(user);
+  console.log(user);
   return (
     <div>
       <h1 className="text-center my-5">Profile</h1>
@@ -22,9 +25,12 @@ const Profile = () => {
           </div>
         </div>
         <div className="col-12 col-lg-8 text-center">
-          <h4 className="my-5">Shivansh Singh</h4>
+          <p className="lead">Special Id : {user.id}</p>
+          <h4 className="my-5">Username : {user.regUsername}</h4>
           <h4 className="my-5">+91 45567 34567</h4>
-          <h4 className="my-5">shivansh@gmail.com</h4>
+          <h4 className="my-5">Email : {user.regEmail}</h4>
+          <h4 className="my-5">Status : {user.regStatus}</h4>
+          <h4 className="my-5">Role : {user.regType}</h4>
         </div>
       </div>
     </div>
