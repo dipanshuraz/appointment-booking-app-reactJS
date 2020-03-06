@@ -1,94 +1,97 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import CurrentBooking from "./CurrentBooking";
+import PastBooking from "./PastBooking";
+import CurrentEvent from "./CurrentEvent";
+import UpcomingEvent from "./UpcomingEvent";
 
-const UserDashboard = () => {
-  return (
-    <div className="container">
-      <h1 className="text-center">User Dashboard</h1>
+class UserDashboard extends React.Component {
+  constructor(props) {
+    super(props);
 
-      <div className="d-flex justify-content-between bg-dark my-5">
-        <div>
-          <button
-            className="btn btn-outline-light btn-lg border-0 font-weight-bold"
-            type="button"
-          >
-            Current Event
-          </button>
-          <button
-            className=" btn btn-outline-light btn-lg border-0 font-weight-bold"
-            type="button"
-          >
-            Upcoming Event
-          </button>
-        </div>
-        <div>
-          <button
-            className=" btn btn-outline-light btn-lg border-0 font-weight-bold"
-            type="button"
-          >
-            Current Booking
-          </button>
-          <button
-            className=" btn btn-outline-light btn-lg border-0 font-weight-bold"
-            type="button"
-          >
-            Past Booking
-          </button>
-        </div>
-      </div>
+    this.state = {
+      page: "1",
+      date: new Date().toLocaleDateString(),
+      event: []
+    };
+  }
 
+  componentDidMount() {
+    axios("/event.json")
+      .then(res => {
+        console.log(res);
+        this.setState({
+          event: res.data
+        });
+      })
+      .catch(error => console.log(error));
+  }
+
+  handleClick = a => {
+    this.setState({
+      ...this.state,
+      page: a
+    });
+  };
+
+  render() {
+    console.log(this.state.page);
+    let content;
+    if (this.state.page === "1")
+      content = (
+        <CurrentEvent event={this.state.event} date={this.state.date} />
+      );
+    else if (this.state.page === "2")
+      content = (
+        <UpcomingEvent event={this.state.event} date={this.state.date} />
+      );
+    else if (this.state.page === "3") content = <CurrentBooking />;
+    else if (this.state.page === "4") content = <PastBooking />;
+
+    return (
       <>
-        <h2 className="text-center">Current Event</h2>
-        <h2 className="text-center mt-2 mb-5">1st Mar 2019</h2>
-
-        <div className="card-group row">
-          <div className="card col-sm-12 col-md-6 col-lg-4">
-            <div className="card-body">
-              <h3 className="card-title text-danger text-center">
-                JavaScript Meetup
-              </h3>
-              <h4 className="card-title text-center">Group</h4>
-              <h6 className="card-title text-center">HSR, Bangalore</h6>
+        <div className="container">
+          <h1 className="text-center mt-5">User Dashboard</h1>
+          <div className="d-flex justify-content-between bg-dark my-5">
+            <div>
+              <button
+                className="btn btn-outline-light btn-lg border-0 font-weight-bold"
+                type="button"
+                onClick={() => this.handleClick("1")}
+              >
+                Current Event
+              </button>
+              <button
+                className=" btn btn-outline-light btn-lg border-0 font-weight-bold"
+                type="button"
+                onClick={() => this.handleClick("2")}
+              >
+                Upcoming Event
+              </button>
             </div>
-            <div className="card-footer bg-white">
-              <Link className="btn btn-outline-info btn-block" to="/dash/book">
-                Book Now
-              </Link>
-            </div>
-          </div>
-
-          <div className="card col-sm-12 col-md-6 col-lg-4">
-            <div className="card-body">
-              <h3 className="card-title text-danger text-center">
-                Dr. S K Agarwal
-              </h3>
-              <h4 className="card-title text-center">One to One</h4>
-              <h6 className="card-title text-center">RR Nagar, Bangalore</h6>
-            </div>
-            <div className="card-footer bg-white">
-              <Link className="btn btn-outline-info btn-block" to="/dash/book">
-                Book Now
-              </Link>
-            </div>
-          </div>
-          <div className="card col-sm-12 col-md-6 col-lg-4">
-            <div className="card-body">
-              <h3 className="card-title text-danger text-center">
-                Styler Saloon
-              </h3>
-              <h4 className="card-title text-center">One to One</h4>
-              <h6 className="card-title text-center">Kormangala, Bangalore</h6>
-            </div>
-            <div className="card-footer bg-white">
-              <Link className="btn btn-outline-info btn-block" to="/dash/book">
-                Book Now
-              </Link>
+            <div>
+              <button
+                className=" btn btn-outline-light btn-lg border-0 font-weight-bold"
+                type="button"
+                onClick={() => this.handleClick("3")}
+              >
+                Current Booking
+              </button>
+              <button
+                className=" btn btn-outline-light btn-lg border-0 font-weight-bold"
+                type="button"
+                onClick={() => this.handleClick("4")}
+              >
+                Past Booking
+              </button>
             </div>
           </div>
         </div>
+        <div className="container">{content}</div>
       </>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default UserDashboard;
