@@ -1,7 +1,12 @@
+/* eslint-disable no-alert */
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+<<<<<<< HEAD
 // import uniqid from "uniqid";
+=======
+import PropTypes from "prop-types";
+>>>>>>> 30db02eef5c7ffbe152161d4703f484c1196c4e1
 import { loginUser } from "../redux/authentication/actions";
 
 export class Login extends Component {
@@ -11,26 +16,27 @@ export class Login extends Component {
     this.state = {
       bool: false,
       logUser: {
-        log_email: "",
-        log_pass: "",
-        log_type: ""
+        logEmail: "",
+        logPass: "",
+        logType: ""
       }
     };
   }
 
   handleClick = async () => {
-    console.log(this.state.logUser.log_type);
-    if (
-      this.state.logUser.log_email !== "" &&
-      this.state.logUser.log_user !== "" &&
-      this.state.logUser.log_type !== ""
-    ) {
-      await this.props.loginUser(this.state.logUser);
+    const {
+      logUser: { logEmail, logPass, logType }
+    } = this.state;
+    const { logUser } = this.state;
+    const { loginUser1 } = this.props;
+
+    if (logEmail !== "" && logPass !== "" && logType !== "") {
+      await loginUser1(logUser);
       this.setState({
         logUser: {
-          log_email: "",
-          log_pass: "",
-          log_type: ""
+          logEmail: "",
+          logPass: "",
+          logType: ""
         }
       });
     } else {
@@ -39,20 +45,25 @@ export class Login extends Component {
   };
 
   handleChange = e => {
-    const obj = { ...this.state.logUser, [e.target.name]: e.target.value };
-    this.setState({ logUser: obj }, () => console.log(this.state));
+    const { logUser } = this.state;
+    const obj = { ...logUser, [e.target.name]: e.target.value };
+    this.setState({ logUser: obj });
   };
 
   onClickEmail = () => {
     this.setState(prev => ({ bool: !prev.bool }));
-    // console.log(uniqid());
   };
 
   render() {
+    const { isAuth } = this.props;
+    const {
+      logUser: { logEmail, logPass, logType }
+    } = this.state;
+
     const { bool } = this.state;
     return (
       <>
-        {this.props.isAuth ? (
+        {isAuth ? (
           <Redirect to="/dash" />
         ) : (
           <div className="container mt-5">
@@ -82,23 +93,23 @@ export class Login extends Component {
                             type="text"
                             placeholder="Email"
                             onChange={this.handleChange}
-                            value={this.state.logUser.log_email}
-                            name="log_email"
+                            value={logEmail}
+                            name="logEmail"
                           />
                           <input
                             className="form-control form-control-lg my-2"
                             type="text"
                             placeholder="Password"
                             onChange={this.handleChange}
-                            value={this.state.logUser.log_pass}
-                            name="log_pass"
+                            value={logPass}
+                            name="logPass"
                           />
                           <select
                             className="form-control form-control-lg my-2"
                             id="exampleFormControlSelect1"
                             onChange={this.handleChange}
-                            value={this.state.logUser.type}
-                            name="log_type"
+                            value={logType}
+                            name="logType"
                           >
                             <option value="">Select Type</option>
                             <option value="admin">Admin</option>
@@ -143,13 +154,19 @@ export class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  loginUser1: PropTypes.func.isRequired,
+  isAuth: PropTypes.bool.isRequired
+};
+
 const mapStateToProps = state => ({
   isAuth: state.authReducer.isAuth,
   user: state.authReducer.user
 });
 
 const mapDispatchToProps = {
-  loginUser: payload => loginUser(payload)
+  loginUser1: payload => loginUser(payload)
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

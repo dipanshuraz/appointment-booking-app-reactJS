@@ -28,7 +28,7 @@ export class ConfirmSlots extends Component {
             </button>
             <hr />
             <p className="lead bold">Create Another</p>
-            <Link tp="/dash">
+            <Link to="/dash">
               <button className="btn btn-success btn-block">Home</button>
             </Link>
           </div>

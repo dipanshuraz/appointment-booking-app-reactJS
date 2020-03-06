@@ -1,3 +1,5 @@
+import { fBaseUsers } from "../../fbaseConfig";
+
 import {
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
@@ -7,8 +9,10 @@ import {
   LOGOUT_USER_FAILURE,
   REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS,
-  REGISTER_USER_FAILURE
+  REGISTER_USER_FAILURE,
+  CHECK_LOGIN_LOCAL
 } from "./actionTypes";
+
 import axios from "../../utils/axiosInterceptor";
 
 export const loginUserRequest = () => ({
@@ -25,38 +29,27 @@ export const loginUserFailure = payload => ({
   error: payload
 });
 
-// export const loginUser = payload => {
-//   return dispatch => {
-//     dispatch(loginUserRequest());
-//     return axios
-//       .post("/users", {
-//         email: payload.email,
-//         password: payload.password
-//       })
-//       .then(res => {
-//         dispatch(loginUserSuccess(res.data));
-//       })
-//       .catch(() => dispatch(loginUserFailure()));
-//   };
-// };
-
 export const loginUser = payload => dispatch => {
   console.log(payload, "Hello");
   dispatch(loginUserRequest());
-  axios
-    .get("http://localhost:4000/users")
-    .then(res => {
-      const users = res.data;
-      const getUser = users.find(user => {
+  return fBaseUsers
+    .get()
+    .then(query => {
+      const array = [];
+      query.forEach(doc => {
+        array.push({ id: doc.id, ...doc.data() });
+      });
+      console.log(array);
+      const getUser = array.find(user => {
         if (
-          user.user_email === payload.log_email &&
-          user.user_pass === payload.log_pass &&
-          user.user_type === payload.log_type
+          user.regEmail === payload.logEmail &&
+          user.regPass === payload.logPass &&
+          user.regType === payload.logType
         ) {
           return user;
         }
       });
-      console.log(getUser);
+
       if (getUser !== undefined) {
         dispatch(loginUserSuccess(getUser));
       } else {
@@ -81,25 +74,10 @@ export const logoutUserFailure = payload => ({
   error: payload
 });
 
-export const logoutUser = payload => {
-  return dispatch => {
-    dispatch(logoutUserRequest());
-    return axios
-      .post(
-        "/logout",
-        {},
-        {
-          headers: {
-            Authorization: payload.token
-          }
-        }
-      )
-      .then(res => {
-        dispatch(logoutUserSuccess(res));
-      })
-      .catch(err => dispatch(logoutUserFailure(err.message)));
-  };
-};
+export const logoutUser = payload => ({
+  type: LOGOUT_USER_SUCCESS,
+  payload
+});
 
 export const registerUserRequest = payload => ({
   type: REGISTER_USER_REQUEST,
@@ -117,24 +95,20 @@ export const registerUserFailure = payload => ({
 });
 
 export const userRegister = payload => dispatch => {
-  console.log(payload);
   dispatch(registerUserRequest());
-  axios({
-    url: "http://localhost:4000/users",
-    data: payload,
-    headers: {
-      "Content-Type": "application/json"
-    },
-    method: "POST"
-  })
+  fBaseUsers
+    .add(payload)
     .then(res => {
-      if (res.status == 201) {
+      if (res.id) {
         dispatch(registerUserSuccess(res.status));
       }
-      console.log(res.data);
     })
     .catch(err => {
       dispatch(registerUserFailure(err.message));
-      console.log(err.message);
     });
 };
+
+export const checkLogin = payload => ({
+  type: CHECK_LOGIN_LOCAL,
+  payload
+});
