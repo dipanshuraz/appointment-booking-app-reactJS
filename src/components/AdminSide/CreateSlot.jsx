@@ -24,7 +24,7 @@ export class CreateSlot extends Component {
   }
 
   handleChange = e => {
-    var user = localStorage.getItem("logged");
+    let user = localStorage.getItem("logged");
     user = JSON.parse(user);
 
     const { regUsername, regEmail, id } = user;

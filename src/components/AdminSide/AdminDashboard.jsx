@@ -4,9 +4,13 @@ import { connect } from "react-redux";
 import BookingCard from "./BookingCard";
 
 const AdminDashboard = props => {
+  let user = localStorage.getItem("logged");
+  user = JSON.parse(user);
   const { allSlots, isLoadingSlots } = props;
-  let openSlots = allSlots.filter(slot => slot.bookingStatus == "true");
-  let closedSlots = allSlots.filter(slot => slot.bookingStatus != "true");
+
+  const uniqSlots = allSlots.filter(slot => slot.userId == user.id);
+  const openSlots = uniqSlots.filter(slot => slot.bookingStatus == "false");
+  const closedSlots = uniqSlots.filter(slot => slot.bookingStatus != "false");
   return (
     <>
       <div className="container">
@@ -15,12 +19,29 @@ const AdminDashboard = props => {
           {isLoadingSlots ? (
             "Is Loading"
           ) : (
-            <div className="col-md-6">
+            <div className="col-md- text-center6">
               <p className="lead display-4 text-center my-3">Booked</p>
-              <BookingCard slot={closedSlots} />
 
-              <p className="lead display-4 text-center my-3">Open Slots</p>
-              <BookingCard slot={openSlots} />
+              {closedSlots.length !== 0 ? (
+                <BookingCard slot={closedSlots} />
+              ) : (
+                "Sorry....no booking!"
+              )}
+
+              <p className="lead display-4 text-center my-3 ">Open Slots</p>
+
+              {openSlots.length !== 0 ? (
+                <BookingCard slot={openSlots} />
+              ) : (
+                <Link to="/dash/createone" className="w-100">
+                  <button
+                    type="submit"
+                    className="btn-outline-success btn-block py-2"
+                  >
+                    Create Now
+                  </button>
+                </Link>
+              )}
             </div>
           )}
 

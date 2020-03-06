@@ -46,7 +46,8 @@ export class Login extends Component {
     this.setState({ logUser: obj });
   };
 
-  onClickEmail = () => {
+  onClickEmail = e => {
+    e.preventDefault();
     this.setState(prev => ({ bool: !prev.bool }));
   };
 
