@@ -2,11 +2,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-<<<<<<< HEAD
-// import uniqid from "uniqid";
-=======
 import PropTypes from "prop-types";
->>>>>>> 30db02eef5c7ffbe152161d4703f484c1196c4e1
 import { loginUser } from "../redux/authentication/actions";
 
 export class Login extends Component {
