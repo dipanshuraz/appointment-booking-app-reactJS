@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { holdUserDetail } from "../../redux/User/action"
-class BookingForm extends React.Component {
+import { holdUserDetail } from "../../redux/User/action";
 
+class BookingForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -13,15 +13,14 @@ class BookingForm extends React.Component {
       mobile: "",
       details: "",
       eid: ""
-    }
+    };
   }
 
-  handleChange = (event) => {
-
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
-    })
-  }
+    });
+  };
 
   // handleClick = (e) => {
   //   console.log("Hello World");
@@ -38,7 +37,7 @@ class BookingForm extends React.Component {
             <div className="form-group row">
               <label htmlFor="name" className="col-sm-2 col-form-label">
                 Name
-            </label>
+              </label>
 
               <input
                 type="text"
@@ -53,7 +52,7 @@ class BookingForm extends React.Component {
             <div className="form-group row">
               <label htmlFor="email" className="col-sm-2 col-form-label">
                 Email
-            </label>
+              </label>
 
               <input
                 type="email"
@@ -68,7 +67,7 @@ class BookingForm extends React.Component {
             <div className="form-group row">
               <label htmlFor="mobileNumber" className="col-sm-2 col-form-label">
                 Mobile Number
-            </label>
+              </label>
               <input
                 type="number"
                 className="form-control"
@@ -81,7 +80,7 @@ class BookingForm extends React.Component {
             <div className="form-group row">
               <label htmlFor="detail" className="col-sm-2 col-form-label">
                 Detail
-            </label>
+              </label>
 
               <textarea
                 className="form-control"
@@ -98,26 +97,25 @@ class BookingForm extends React.Component {
                   to="/dash/payment"
                   className="btn btn-outline-success  btn-block"
                   onClick={() => this.props.addHold(this.state)}
-
                 >
                   Payment
-              </Link>
+                </Link>
               </div>
             </div>
           </form>
         </div>
       </>
-    )
+    );
   }
-};
+}
 // const mapStateToProps = (state) => ({
 
 // })
 
 const mapDispatchToProps = dispatch => {
   return {
-    addHold: (a) => dispatch(holdUserDetail(a))
-  }
-}
+    addHold: a => dispatch(holdUserDetail(a))
+  };
+};
 
-export default connect(null, mapDispatchToProps)(BookingForm)
+export default connect(null, mapDispatchToProps)(BookingForm);

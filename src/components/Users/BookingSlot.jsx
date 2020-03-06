@@ -3,26 +3,24 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 class BookingSlot extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       eid: "",
       event: []
-    }
-
-
+    };
   }
+
   componentDidMount() {
     axios("/event.json")
-      .then((res) => {
+      .then(res => {
         console.log(res);
         this.setState({
           event: res.data.filter(ele => ele.eid === this.props.match.params.id)
-        })
+        });
       })
-      .catch((error) => console.log(error))
+      .catch(error => console.log(error));
   }
 
   render() {
@@ -32,13 +30,13 @@ class BookingSlot extends React.Component {
     console.log("booking events", this.state.event);
     // const event_name = this.state.event[0]["name"];
 
-    let content = this.state.event.map(ele => (
+    const content = this.state.event.map(ele => (
       <>
         <div className="row">
           <div className="col-12 col-lg-6 text-center my-2 ">
             <h3 className="bg-dark font-weight-bold text-white py-1 rounded-pill">
               Event Name
-             </h3>
+            </h3>
           </div>
           <div className="col-12 col-lg-6 text-center my-2">
             <h3>{ele.name}</h3>
@@ -106,7 +104,7 @@ class BookingSlot extends React.Component {
                 className="btn btn-lg btn-outline-success"
               >
                 Book Now
-        </Link>
+              </Link>
             </div>
           </div>
           <div className="row col-12 mb-3">
@@ -122,7 +120,7 @@ class BookingSlot extends React.Component {
                 className="btn btn-lg btn-outline-success"
               >
                 Book Now
-        </Link>
+              </Link>
             </div>
           </div>
           <div className="row col-12 mb-3">
@@ -160,8 +158,7 @@ class BookingSlot extends React.Component {
           </div>
         </div>
       </>
-    ))
-
+    ));
 
     return (
       <>
@@ -170,8 +167,8 @@ class BookingSlot extends React.Component {
           {content}
         </div>
       </>
-    )
+    );
   }
-};
+}
 
 export default BookingSlot;

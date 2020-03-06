@@ -33,7 +33,7 @@ export class Register extends Component {
     this.setState(
       // { ...this.state.regUser, regUser: { uniqid: uniqid() } },
       () => {
-        this.props.userRegister(this.state.regUser)
+        this.props.userRegister(this.state.regUser);
         console.log(this.state.regUser);
       }
     );
@@ -110,21 +110,21 @@ export class Register extends Component {
                       </div>
                     </form>
                   ) : (
-                      <>
-                        <button
-                          type="button"
-                          className="btn btn-lg btn-primary border btn-block text-left"
-                        >
-                          <i className="fab fa-google" /> Gmail
+                    <>
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-primary border btn-block text-left"
+                      >
+                        <i className="fab fa-google" /> Gmail
                       </button>
-                        <button
-                          type="button"
-                          className="btn btn-lg btn-secondary border btn-block text-left"
-                        >
-                          <i className="fab fa-facebook-f" /> Facebook
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-secondary border btn-block text-left"
+                      >
+                        <i className="fab fa-facebook-f" /> Facebook
                       </button>
-                      </>
-                    )}
+                    </>
+                  )}
                 </div>
                 <div className="col-md-2 " />
               </div>
