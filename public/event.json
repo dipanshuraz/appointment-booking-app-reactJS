@@ -1,0 +1,110 @@
+[
+    {
+        "eid": "1",
+        "name": "JavaScript Meetup",
+        "date": "2020-03-06",
+        "type": "Group",
+        "duration": "30",
+        "members": "4",
+        "venue": "Bhive, HSR Layout",
+        "price": "2000",
+        "numberOfSlot": "5",
+        "Slots": [
+            "10:00 AM to 10:30 AM",
+            "11:00 AM to 11:30 AM",
+            "12:00 PM to 12:30 PM",
+            "1:00 AM to 1:30 AM",
+            "1:00 AM to 1:30 AM"
+        ]
+    },
+    {
+        "eid": "2",
+        "name": "React Meetup",
+        "date": "2020-03-05",
+        "type": "Group",
+        "duration": "30",
+        "members": "4",
+        "venue": "Bhive, Kormangala",
+        "price": "2000",
+        "numberOfSlot": "5",
+        "Slots": [
+            "10:00 AM to 10:30 AM",
+            "11:00 AM to 11:30 AM",
+            "12:00 PM to 12:30 PM",
+            "1:00 AM to 1:30 AM",
+            "1:00 AM to 1:30 AM"
+        ]
+    },
+    {
+        "eid": "3",
+        "name": "Dr.S K Agarwal(OPD)",
+        "date": "2020-03-05",
+        "type": "One to One",
+        "duration": "30",
+        "members": "4",
+        "venue": "RR Nagar, Bangalore",
+        "price": "2000",
+        "numberOfSlot": "5",
+        "Slots": [
+            "10:00 AM to 10:30 AM",
+            "11:00 AM to 11:30 AM",
+            "12:00 PM to 12:30 PM",
+            "1:00 AM to 1:30 AM",
+            "1:00 AM to 1:30 AM"
+        ]
+    },
+    {
+        "eid": "4",
+        "name": "Styler Saloon",
+        "date": "2020-03-06",
+        "type": "One to One",
+        "duration": "30",
+        "members": "4",
+        "venue": "Kormangala",
+        "price": "1000",
+        "numberOfSlot": "5",
+        "Slots": [
+            "10:00 AM to 10:30 AM",
+            "11:00 AM to 11:30 AM",
+            "12:00 PM to 12:30 PM",
+            "1:00 AM to 1:30 AM",
+            "1:00 AM to 1:30 AM"
+        ]
+    },
+    {
+        "eid": "5",
+        "name": "Node.js Meetup",
+        "date": "2020-03-10",
+        "type": "Group",
+        "duration": "30",
+        "members": "4",
+        "venue": "WeWork, JP Nagar",
+        "price": "2000",
+        "numberOfSlot": "5",
+        "Slots": [
+            "10:00 AM to 10:30 AM",
+            "11:00 AM to 11:30 AM",
+            "12:00 PM to 12:30 PM",
+            "1:00 AM to 1:30 AM",
+            "1:00 AM to 1:30 AM"
+        ]
+    },
+    {
+        "eid": "6",
+        "name": "Dentist",
+        "date": "2020-04-10",
+        "type": "One To One",
+        "duration": "30",
+        "members": "4",
+        "venue": "WeWork, JP Nagar",
+        "price": "2000",
+        "numberOfSlot": "5",
+        "Slots": [
+            "10:00 AM to 10:30 AM",
+            "11:00 AM to 11:30 AM",
+            "12:00 PM to 12:30 PM",
+            "1:00 AM to 1:30 AM",
+            "1:00 AM to 1:30 AM"
+        ]
+    }
+]

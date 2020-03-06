@@ -22,10 +22,10 @@ const DashboardRoutes = props => {
     <>
       <Route path="/dash" render={NavBar} />
       <Route path="/dash" exact render={() => <Dashboard />} />
-      <Route exact path="/dash/book" render={() => <BookingSlot />} />
-      <Route exact path="/dash/userdetail">
-        <BookingForm />
-      </Route>
+      <Route exact path="/dash/book/:id" render={(props) => <BookingSlot {...props} />} />
+
+      <Route exact path="/dash/userdetail/:id" render={(props) => <BookingForm {...props} />} />
+
       <Route exact path="/dash/payment">
         <BookingPayment />
       </Route>
@@ -41,8 +41,8 @@ const DashboardRoutes = props => {
       <Route path="/dash/reports" render={() => <Reports />} />
     </>
   ) : (
-    <Redirect to="/login" />
-  );
+      <Redirect to="/login" />
+    );
 };
 
 DashboardRoutes.propTypes = {
