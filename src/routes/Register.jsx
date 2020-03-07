@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-<<<<<<< HEAD
-// import uniqid from "uniqid";
-=======
->>>>>>> 30db02eef5c7ffbe152161d4703f484c1196c4e1
 import { userRegister } from "../redux/authentication/actions";
 
 export class Register extends Component {
@@ -32,17 +28,7 @@ export class Register extends Component {
   };
 
   handleClick = () => {
-<<<<<<< HEAD
-    this.setState(
-      // { ...this.state.regUser, regUser: { uniqid: uniqid() } },
-      () => {
-        this.props.userRegister(this.state.regUser);
-        console.log(this.state.regUser);
-      }
-    );
-=======
     this.props.userRegister(this.state.regUser);
->>>>>>> 30db02eef5c7ffbe152161d4703f484c1196c4e1
   };
 
   render() {

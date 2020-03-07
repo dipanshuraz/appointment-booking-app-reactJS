@@ -6,9 +6,6 @@ import userReducer from "./User/reducer";
 
 const rootReducer = combineReducers({ authReducer, userReducer, adminReducer });
 
-
-
-
 let composeEnhancers = compose;
 
 if (process.env.NODE_ENV !== "production") {

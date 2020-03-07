@@ -4,7 +4,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log("userReducer", state);
+  // console.log("userReducer", state);
   switch (action.type) {
     case "HOLD_USER_DETAILS": {
       return {

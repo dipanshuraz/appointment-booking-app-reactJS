@@ -14,12 +14,13 @@ import BookingConfirmation from "../components/Users/BookingConfirmation";
 import CreateOne from "../components/AdminSide/CreateSlot";
 import ConfirmSlots from "../components/AdminSide/ConfirmSlots";
 import CancelSlots from "../components/AdminSide/CancelSlots";
-import { fetchSlots } from "../redux/Admin/actions";
+import { fetchEvents } from "../redux/Admin/actions";
+import OpenEvent from "../components/AdminSide/OpenEvents";
 
 const DashboardRoutes = props => {
   useEffect(() => {
-    const { fetchSlots } = props;
-    fetchSlots();
+    const { fetchEvents } = props;
+    fetchEvents();
   }, []);
   const { isAuth } = props;
   console.log(isAuth);
@@ -33,7 +34,10 @@ const DashboardRoutes = props => {
         path="/dash/book/:id"
         render={props => <BookingSlot {...props} />}
       />
-
+      <Route
+        path="/dash/events/:eventId"
+        render={props => <OpenEvent {...props} />}
+      />
       <Route
         exact
         path="/dash/userdetail/:id"
@@ -67,7 +71,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  fetchSlots
+  fetchEvents
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardRoutes);
