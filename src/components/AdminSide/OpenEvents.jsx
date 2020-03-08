@@ -17,21 +17,19 @@ function OpenEvents(props) {
     return slot.slotId === props.match.params.eventId;
   });
 
-  const startTime = event.createSlotDate + " " + event.createEventStart;
-  const EndTime = event.createSlotDate + " " + event.createEventEnd;
+  const startTime = `${event.createSlotDate} ${event.createEventStart}`;
+  const EndTime = `${event.createSlotDate} ${event.createEventEnd}`;
 
-  var eventStartTime = new Date(startTime).getTime();
-  var eventEndTime = new Date(EndTime).getTime();
+  const eventStartTime = new Date(startTime).getTime();
+  const eventEndTime = new Date(EndTime).getTime();
 
   let count = 0;
-  for (var i = eventStartTime; i < eventEndTime; i += 1800000) {
+  for (let i = eventStartTime; i < eventEndTime; i += 1800000) {
     if (count < 10) {
       arr.push(i);
       count++;
     }
   }
-
-  console.log(arr);
   return (
     <div>
       <div className="container">

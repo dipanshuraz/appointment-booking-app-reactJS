@@ -160,7 +160,7 @@ export class CreateSlot extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="appt">Select Start Time:</label>
+                  <label htmlFor="appt">Select Start Time:</label>
                   <input
                     type="time"
                     className="form-control"
@@ -170,7 +170,7 @@ export class CreateSlot extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="appt">Select End Time:</label>
+                  <label htmlFor="appt">Select End Time:</label>
                   <input
                     type="time"
                     className="form-control"
