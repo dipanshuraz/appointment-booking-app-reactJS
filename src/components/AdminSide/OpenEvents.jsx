@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { fetchEvents } from "../../redux/Admin/actions";
 import { Link } from "react-router-dom";
+import { fetchEvents } from "../../redux/Admin/actions";
 
 function OpenEvents(props) {
   const [arr, setArr] = useState([]);
@@ -29,7 +29,7 @@ function OpenEvents(props) {
 
   const setSlot = () => {
     let count = 0;
-    let temp = [];
+    const temp = [];
     for (let i = eventStartTime; i < eventEndTime; i += duration) {
       if (count < slotsNum) {
         temp.push(i);
