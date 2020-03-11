@@ -1,37 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchEvents } from "../../redux/Admin/actions";
+import { Link } from "react-router-dom";
 
 function OpenEvents(props) {
   const [arr, setArr] = useState([]);
+  const [flag, setFlag] = useState(true);
   const { fetchEvents, allEvents } = props;
   useEffect(() => {
     fetchEvents();
   }, []);
 
   useEffect(() => {
-    setArr(arr);
+    setSlot();
   }, []);
 
   const event = allEvents.find(slot => {
     return slot.slotId === props.match.params.eventId;
   });
 
+  const duration = event.createDuration * 60000;
+  const slotsNum = event.createActiveSlots;
   const startTime = `${event.createSlotDate} ${event.createEventStart}`;
   const EndTime = `${event.createSlotDate} ${event.createEventEnd}`;
 
   const eventStartTime = new Date(startTime).getTime();
   const eventEndTime = new Date(EndTime).getTime();
 
-  let count = 0;
-  for (let i = eventStartTime; i < eventEndTime; i += 1800000) {
-    if (count < 10) {
-      arr.push(i);
-      count++;
+  const setSlot = () => {
+    let count = 0;
+    let temp = [];
+    for (let i = eventStartTime; i < eventEndTime; i += duration) {
+      if (count < slotsNum) {
+        temp.push(i);
+        count++;
+      }
     }
-  }
+
+    setArr(temp);
+  };
+
   return (
-    <div>
+    <>
       <div className="container">
         <div className="row">
           <div>
@@ -42,12 +52,27 @@ function OpenEvents(props) {
               <p>Venue : {event.createEventVenue}</p>
               <p>Price : Rs {event.createEventPrice}</p>
               <p>Type : {event.createEventType}</p>
+              <p>Slots : {event.createActiveSlots}</p>
               <p>ID : {event.slotId}</p>
             </div>
           </div>
         </div>
+        <div className="row">
+          {arr.map(elem => {
+            return (
+              <div className="col-md-4">
+                <Link
+                  to={`/dash/confirm/${elem}`}
+                  className="btn btn-outline-dark btn-block m-2"
+                >
+                  Book {new Date(elem).toLocaleTimeString()}
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

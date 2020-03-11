@@ -14,14 +14,16 @@ import BookingConfirmation from "../components/Users/BookingConfirmation";
 import CreateOne from "../components/AdminSide/CreateSlot";
 import ConfirmSlots from "../components/AdminSide/ConfirmSlots";
 import CancelSlots from "../components/AdminSide/CancelSlots";
-import { fetchEvents } from "../redux/Admin/actions";
+import { fetchEvents, fetchSlots } from "../redux/Admin/actions";
 import OpenEvent from "../components/AdminSide/OpenEvents";
 
 const DashboardRoutes = props => {
   useEffect(() => {
-    const { fetchEvents } = props;
+    const { fetchEvents, fetchSlots } = props;
     fetchEvents();
+    fetchSlots();
   }, []);
+
   const { isAuth } = props;
   console.log(isAuth);
   return isAuth ? (
@@ -51,7 +53,7 @@ const DashboardRoutes = props => {
         <BookingConfirmation />
       </Route>
       <Route exact path="/dash/createone" component={CreateOne} />
-      <Route exact path="/dash/confirm" component={ConfirmSlots} />
+      <Route exact path="/dash/confirm/" component={ConfirmSlots} />
       <Route exact path="/dash/cancelslots" component={CancelSlots} />
       <Route path="/dash/settings" render={() => <Settings />} />
       <Route path="/dash/profile" render={() => <Profile />} />
@@ -71,7 +73,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  fetchEvents
+  fetchEvents,
+  fetchSlots
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardRoutes);
