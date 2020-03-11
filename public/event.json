@@ -2,7 +2,7 @@
     {
         "eid": "1",
         "name": "JavaScript Meetup",
-        "date": "2020-03-06",
+        "date": "2020-03-09",
         "type": "Group",
         "duration": "30",
         "members": "4",
@@ -20,7 +20,7 @@
     {
         "eid": "2",
         "name": "React Meetup",
-        "date": "2020-03-05",
+        "date": "2020-03-09",
         "type": "Group",
         "duration": "30",
         "members": "4",
@@ -38,7 +38,7 @@
     {
         "eid": "3",
         "name": "Dr.S K Agarwal(OPD)",
-        "date": "2020-03-05",
+        "date": "2020-03-09",
         "type": "One to One",
         "duration": "30",
         "members": "4",

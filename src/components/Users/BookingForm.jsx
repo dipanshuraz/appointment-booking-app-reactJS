@@ -11,8 +11,7 @@ class BookingForm extends React.Component {
       name: "",
       email: "",
       mobile: "",
-      details: "",
-      eid: ""
+      detail: ""
     };
   }
 
@@ -20,7 +19,12 @@ class BookingForm extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     });
+
+
+
   };
+
+
 
   // handleClick = (e) => {
   //   console.log("Hello World");
@@ -28,7 +32,7 @@ class BookingForm extends React.Component {
   // }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <>
         <div className="container">

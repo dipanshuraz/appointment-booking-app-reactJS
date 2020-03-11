@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { addToBooked } from "../../redux/User/action";
+import { connect } from "react-redux";
 
-const BookingPayment = () => {
+
+const BookingPayment = (props) => {
+
+  console.log("payment", props);
   return (
     <>
       <div className="bg-dark ">
@@ -88,7 +93,7 @@ const BookingPayment = () => {
                 <div className="col-md-12">
                   <div className="form-control total btn btn-dark">
                     Total:
-                    <span className="amount ml-3">₹ 1000</span>
+                      <span className="amount ml-3">₹ {props.event[0].price}</span>
                   </div>
                 </div>
               </div>
@@ -97,7 +102,10 @@ const BookingPayment = () => {
                   <Link
                     to="/dash/successful"
                     className="form-control btn btn-danger submit-button"
-                    type="submit"
+                    onClick={() => props.addToBooked({
+                      event: props.event,
+                      details: props.details
+                    })}
                   >
                     Pay Now
                   </Link>
@@ -112,4 +120,19 @@ const BookingPayment = () => {
   );
 };
 
-export default BookingPayment;
+const mapStateToProps = (state) => {
+
+  return {
+    event: state.userReducer.event,
+    details: state.userReducer.hold,
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+
+  return {
+    addToBooked: (a) => dispatch(addToBooked(a))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BookingPayment);

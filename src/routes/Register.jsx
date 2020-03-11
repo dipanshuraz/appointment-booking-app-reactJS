@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-<<<<<<< HEAD
+
 // import uniqid from "uniqid";
-=======
->>>>>>> 30db02eef5c7ffbe152161d4703f484c1196c4e1
+
 import { userRegister } from "../redux/authentication/actions";
 
 export class Register extends Component {
@@ -32,17 +31,9 @@ export class Register extends Component {
   };
 
   handleClick = () => {
-<<<<<<< HEAD
-    this.setState(
-      // { ...this.state.regUser, regUser: { uniqid: uniqid() } },
-      () => {
-        this.props.userRegister(this.state.regUser);
-        console.log(this.state.regUser);
-      }
-    );
-=======
+
     this.props.userRegister(this.state.regUser);
->>>>>>> 30db02eef5c7ffbe152161d4703f484c1196c4e1
+
   };
 
   render() {
@@ -116,21 +107,21 @@ export class Register extends Component {
                       </div>
                     </form>
                   ) : (
-                    <>
-                      <button
-                        type="button"
-                        className="btn btn-lg btn-primary border btn-block text-left"
-                      >
-                        <i className="fab fa-google" /> Gmail
+                      <>
+                        <button
+                          type="button"
+                          className="btn btn-lg btn-primary border btn-block text-left"
+                        >
+                          <i className="fab fa-google" /> Gmail
                       </button>
-                      <button
-                        type="button"
-                        className="btn btn-lg btn-secondary border btn-block text-left"
-                      >
-                        <i className="fab fa-facebook-f" /> Facebook
+                        <button
+                          type="button"
+                          className="btn btn-lg btn-secondary border btn-block text-left"
+                        >
+                          <i className="fab fa-facebook-f" /> Facebook
                       </button>
-                    </>
-                  )}
+                      </>
+                    )}
                 </div>
                 <div className="col-md-2 " />
               </div>
