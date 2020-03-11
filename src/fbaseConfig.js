@@ -18,3 +18,6 @@ const db = firebase.firestore();
 export const fBaseUsers = db.collection("users");
 export const fBaseEvents = db.collection("events");
 export const fBaseBooking = db.collection("booking");
+
+export const fBaseBooked = db.collection("bookedSlots");
+

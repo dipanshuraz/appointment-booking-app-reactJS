@@ -5,7 +5,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-
   switch (action.type) {
     case "HOLD_USER_DETAILS": {
       return {
