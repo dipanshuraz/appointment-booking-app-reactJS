@@ -4,3 +4,17 @@ export const holdUserDetail = item => {
     payload: item
   };
 };
+
+export const addEvent = item => {
+  return {
+    type: "ADD_EVENT",
+    payload: item
+  };
+};
+
+export const addToBooked = item => {
+  return {
+    type: "ADD_TO_BOOKED",
+    payload: item
+  };
+};

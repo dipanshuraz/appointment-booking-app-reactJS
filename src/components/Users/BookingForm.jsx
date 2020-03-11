@@ -11,8 +11,7 @@ class BookingForm extends React.Component {
       name: "",
       email: "",
       mobile: "",
-      details: "",
-      eid: ""
+      detail: ""
     };
   }
 
@@ -28,7 +27,7 @@ class BookingForm extends React.Component {
   // }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <>
         <div className="container">
