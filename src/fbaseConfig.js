@@ -16,4 +16,4 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 export const fBaseUsers = db.collection("users");
-export const fBaseSlots = db.collection("slots");
+export const fBaseEvents = db.collection("events");

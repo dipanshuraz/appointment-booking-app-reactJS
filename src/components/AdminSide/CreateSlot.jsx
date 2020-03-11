@@ -10,21 +10,21 @@ export class CreateSlot extends Component {
     this.state = {
       createEvent: {
         createEventName: "",
-        createActiveSlots: "",
         createDuration: "",
-        createEventName: "",
         createEventPrice: "",
         createEventVenue: "",
-        bookingStatus: "false",
         createEventType: "",
         createEventMembers: 1 || "",
-        createEventTime: new Date()
+        createActiveSlots: "",
+        createEventDetails: "",
+        createEventEnd: "",
+        createEventStart: ""
       }
     };
   }
 
   handleChange = e => {
-    var user = localStorage.getItem("logged");
+    let user = localStorage.getItem("logged");
     user = JSON.parse(user);
 
     const { regUsername, regEmail, id } = user;
@@ -37,9 +37,7 @@ export class CreateSlot extends Component {
       regEmail,
       userId
     };
-    this.setState({ createEvent: obj }, () =>
-      console.log(this.state.createEvent.createSlotDate)
-    );
+    this.setState({ createEvent: obj });
   };
 
   handleClick = () => {
@@ -49,7 +47,7 @@ export class CreateSlot extends Component {
   render() {
     return (
       <div className="container my-5 ">
-        <h1 className="text-center text-secondary">Create Slot</h1>
+        <h1 className="text-center text-secondary">Create Event</h1>
         <hr />
         <div className="row">
           <div className="col-md-6">
@@ -58,7 +56,7 @@ export class CreateSlot extends Component {
                 <div className="form-group">
                   <label htmlFor=""> EventType :</label>
                   <select
-                    className="form-control form-control-lg my-2"
+                    className="form-control form-control my-2"
                     id="exampleFormControlSelect1"
                     onChange={this.handleChange}
                     value={this.state.createEvent.createEventType}
@@ -117,7 +115,18 @@ export class CreateSlot extends Component {
                     name="createActiveSlots"
                   />
                 </div>
-
+                <div className="form-group">
+                  <label htmlFor=""> Details :</label>
+                  <textarea
+                    className="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="3"
+                    name="contactMessage"
+                    value={this.state.createEventDetails}
+                    onChange={this.handleChange}
+                    name="createEventDetails"
+                  />
+                </div>
                 <div className="form-group">
                   <label htmlFor=""> Price :</label>
                   <input
@@ -147,6 +156,27 @@ export class CreateSlot extends Component {
                     className="form-control"
                     value={this.state.createEvent.createSlotDate}
                     onChange={this.handleChange}
+                    name="createSlotDate"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="appt">Select Start Time:</label>
+                  <input
+                    type="time"
+                    className="form-control"
+                    value={this.state.createEvent.createEventStart}
+                    onChange={this.handleChange}
+                    name="createEventStart"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="appt">Select End Time:</label>
+                  <input
+                    type="time"
+                    className="form-control"
+                    value={this.state.createEvent.createEventEnd}
+                    onChange={this.handleChange}
+                    name="createEventEnd"
                   />
                 </div>
               </div>

@@ -1,49 +1,49 @@
 import {
-  FETCH_SLOTS_REQ,
-  FETCH_SLOTS_SUCCESS,
-  FETCH_SLOTS_FAILS,
-  CREATE_SLOT_REQ,
-  CREATE_SLOT_SUCCESS,
-  CREATE_SLOT_FAIL
+  FETCH_EVENTS_REQ,
+  FETCH_EVENTS_SUCCESS,
+  FETCH_EVENTS_FAILS,
+  CREATE_EVENTS_REQ,
+  CREATE_EVENTS_SUCCESS,
+  CREATE_EVENTS_FAIL
 } from "./actions";
 
 const initialState = {
-  allSlots: [],
-  isLoadingSlots: false,
-  isCreatingSlot: false
+  allEvents: [],
+  isLoadingEvent: false,
+  isCreatingEvent: false
 };
 
 const adminReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_SLOTS_REQ:
+    case FETCH_EVENTS_REQ:
       return {
         ...state,
-        isLoadingSlots: true
+        isLoadingEvent: true
       };
-    case FETCH_SLOTS_SUCCESS:
+    case FETCH_EVENTS_SUCCESS:
       return {
         ...state,
-        allSlots: action.payload,
-        isLoadingSlots: false
+        allEvents: action.payload,
+        isLoadingEvent: false
       };
 
-    case FETCH_SLOTS_FAILS:
+    case FETCH_EVENTS_FAILS:
       return {
         ...state,
-        isLoadingSlots: false
+        isLoadingEvent: false
       };
-    case CREATE_SLOT_REQ:
+    case CREATE_EVENTS_REQ:
       return {
         ...state,
-        isCreatingSlot: true
+        isCreatingEvent: true
       };
-    case CREATE_SLOT_SUCCESS:
+    case CREATE_EVENTS_SUCCESS:
       console.log(action.payload);
       return {
         ...state,
-        isCreatingSlot: false
+        isCreatingEvent: false
       };
-    case CREATE_SLOT_FAIL:
+    case CREATE_EVENTS_FAIL:
       return {
         ...state
       };

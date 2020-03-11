@@ -1,7 +1,7 @@
 import React from "react";
 
 const Profile = () => {
-  var user = localStorage.getItem("logged");
+  let user = localStorage.getItem("logged");
   user = JSON.parse(user);
   console.log(user);
   return (
