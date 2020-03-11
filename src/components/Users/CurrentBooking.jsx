@@ -1,35 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const CurrentBooking = (props) => {
-
+const CurrentBooking = props => {
   const bookEvent = props.booked;
   const date = new Date().toLocaleDateString();
 
   console.log(bookEvent);
   console.log(date);
-  let content = bookEvent && bookEvent.map(ele => (
-
-    <div className="d-flex border border-dark p-5 justify-content-between my-5">
-      <div>
-        <h4>Date: {ele.event[0].date}</h4>
-        <h4>Name: {ele.event[0].name}</h4>
-        <h4>Venue:{ele.event[0].venue}</h4>
-        <h4>Time: 11:00 am to 11:20 am</h4>
-
+  const content =
+    bookEvent &&
+    bookEvent.map(ele => (
+      <div className="d-flex border border-dark p-5 justify-content-between my-5">
+        <div>
+          <h4>Date: {ele.event[0].date}</h4>
+          <h4>Name: {ele.event[0].name}</h4>
+          <h4>Venue:{ele.event[0].venue}</h4>
+          <h4>Time: 11:00 am to 11:20 am</h4>
+        </div>
+        <div>
+          <h4>{ele.details.name}</h4>
+          <h4>{ele.details.email}</h4>
+          <h4>{ele.details.mobile}</h4>
+          <h4>{ele.details.detail}</h4>
+        </div>
       </div>
-      <div>
-        <h4>{ele.details.name}</h4>
-        <h4>{ele.details.email}</h4>
-        <h4>{ele.details.mobile}</h4>
-        <h4>{ele.details.detail}</h4>
-      </div>
-
-
-
-    </div>
-
-  ))
+    ));
   // creating upcoming events arrays
   // const current_booked = bookEvent.filter(ele => {
   //   // yyyy-mm-dd
@@ -74,16 +69,13 @@ const CurrentBooking = (props) => {
     <>
       <h1 className="text-center">Current Booking</h1>
       {content}
-
     </>
   );
-}
+};
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     booked: state.userReducer.booked
-  }
-}
+  };
+};
 export default connect(mapStateToProps, null)(CurrentBooking);
-

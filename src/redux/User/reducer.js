@@ -1,4 +1,3 @@
-
 const initialState = {
   hold: {},
   event: {},
@@ -19,13 +18,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         event: action.payload
-      }
+      };
     }
     case "ADD_TO_BOOKED": {
       return {
         ...state,
         booked: [...state.booked, action.payload]
-      }
+      };
     }
     default:
       return { ...state };

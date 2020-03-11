@@ -129,24 +129,18 @@ const AccountSetting = () => {
         </div>
       </div>
 
-
-
       <div className="d-flex border border-dark p-5 justify-content-between">
         <div>
           <h4>Date: 22/10/12</h4>
           <h4>Name: JavaScript Meetup</h4>
           <h4>Venue: Bhive, HSR Layout, Bangalore</h4>
           <h4>Time: 11:00 am to 11:20 am</h4>
-
         </div>
         <div>
           <h4>JavaScript Meetup</h4>
           <h4>Bhive, HSR Layout, Bangalore</h4>
           <h4>22/10/12</h4>
         </div>
-
-
-
       </div>
     </>
   );

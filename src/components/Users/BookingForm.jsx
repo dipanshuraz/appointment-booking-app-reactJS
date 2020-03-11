@@ -19,12 +19,7 @@ class BookingForm extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-
-
-
   };
-
-
 
   // handleClick = (e) => {
   //   console.log("Hello World");

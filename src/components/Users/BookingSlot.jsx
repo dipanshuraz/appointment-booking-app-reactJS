@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { addEvent } from "../../redux/User/action";
 import { connect } from "react-redux";
+import { addEvent } from "../../redux/User/action";
 
 class BookingSlot extends React.Component {
   constructor(props) {
@@ -132,7 +132,7 @@ class BookingSlot extends React.Component {
                   onClick={() => this.props.addEvent(this.state.event)}
                 >
                   Book Now
-              </Link>
+                </Link>
               </div>
             </div>
             <div className="row col-12 mb-3">
@@ -149,7 +149,7 @@ class BookingSlot extends React.Component {
                   onClick={() => this.props.addEvent(this.state.event)}
                 >
                   Book Now
-              </Link>
+                </Link>
               </div>
             </div>
             <div className="row col-12 mb-3">
@@ -166,7 +166,7 @@ class BookingSlot extends React.Component {
                   onClick={() => this.props.addEvent(this.state.event)}
                 >
                   Book Now
-              </Link>
+                </Link>
               </div>
             </div>
 
@@ -184,7 +184,7 @@ class BookingSlot extends React.Component {
                   onClick={() => this.props.addEvent(this.state.event)}
                 >
                   Book Now
-              </Link>
+                </Link>
               </div>
             </div>
           </div>
@@ -203,10 +203,9 @@ class BookingSlot extends React.Component {
   }
 }
 
-
 const mapDispatchToProps = dispatch => {
   return {
-    addEvent: (e) => dispatch(addEvent(e))
+    addEvent: e => dispatch(addEvent(e))
   };
 };
 

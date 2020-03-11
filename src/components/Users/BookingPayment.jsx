@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { addToBooked } from "../../redux/User/action";
 import { connect } from "react-redux";
+import { addToBooked } from "../../redux/User/action";
 
-
-const BookingPayment = (props) => {
-
+const BookingPayment = props => {
   console.log("payment", props);
   return (
     <>
@@ -93,7 +91,9 @@ const BookingPayment = (props) => {
                 <div className="col-md-12">
                   <div className="form-control total btn btn-dark">
                     Total:
-                      <span className="amount ml-3">₹ {props.event[0].price}</span>
+                    <span className="amount ml-3">
+                      ₹ {props.event[0].price}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -102,10 +102,12 @@ const BookingPayment = (props) => {
                   <Link
                     to="/dash/successful"
                     className="form-control btn btn-danger submit-button"
-                    onClick={() => props.addToBooked({
-                      event: props.event,
-                      details: props.details
-                    })}
+                    onClick={() =>
+                      props.addToBooked({
+                        event: props.event,
+                        details: props.details
+                      })
+                    }
                   >
                     Pay Now
                   </Link>
@@ -120,19 +122,16 @@ const BookingPayment = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-
+const mapStateToProps = state => {
   return {
     event: state.userReducer.event,
-    details: state.userReducer.hold,
+    details: state.userReducer.hold
+  };
+};
 
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-
+const mapDispatchToProps = dispatch => {
   return {
-    addToBooked: (a) => dispatch(addToBooked(a))
-  }
-}
+    addToBooked: a => dispatch(addToBooked(a))
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(BookingPayment);

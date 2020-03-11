@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 
-const BookingConfirmation = (props) => {
-
-
-
+const BookingConfirmation = props => {
   // let event = this.state.event.filter(ele => Number(ele.id) === Number(this.props.eid))
   // console.log("confirmations page");
   // console.log("confirmations", this.props);
@@ -19,31 +16,30 @@ const BookingConfirmation = (props) => {
       <h3>Time: 11:00 am to 11:20 am</h3>
       <h3>Venue: {ele.venue}</h3>
     </>
-  ))
+  ));
   return (
     <>
       <div className="mt-5 container">
         <div className="jumbotron">
           <h1 className="display-3 text-success text-center mb-5">
             Successful Payment!
-            </h1>
+          </h1>
           {content}
 
           <div className="text-center">
             <Link className="btn btn-outline-dark btn-lg mt-4" to="/dash">
               Go Back Dashboard
-              </Link>
+            </Link>
           </div>
         </div>
       </div>
     </>
   );
-}
+};
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     event: state.userReducer.event
-  }
-}
+  };
+};
 export default connect(mapStateToProps, null)(BookingConfirmation);

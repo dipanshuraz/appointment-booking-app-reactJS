@@ -5,19 +5,16 @@ export const holdUserDetail = item => {
   };
 };
 
-
-export const addEvent = (item) => {
-
+export const addEvent = item => {
   return {
     type: "ADD_EVENT",
     payload: item
-  }
-}
+  };
+};
 
-export const addToBooked = (item) => {
-
+export const addToBooked = item => {
   return {
     type: "ADD_TO_BOOKED",
     payload: item
-  }
-}
+  };
+};
