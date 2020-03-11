@@ -2,7 +2,7 @@
     {
         "eid": "1",
         "name": "JavaScript Meetup",
-        "date": "2020-03-09",
+        "date": "2020-03-11",
         "type": "Group",
         "duration": "30",
         "members": "4",
@@ -38,7 +38,7 @@
     {
         "eid": "3",
         "name": "Dr.S K Agarwal(OPD)",
-        "date": "2020-03-09",
+        "date": "2020-03-11",
         "type": "One to One",
         "duration": "30",
         "members": "4",
@@ -56,7 +56,7 @@
     {
         "eid": "4",
         "name": "Styler Saloon",
-        "date": "2020-03-06",
+        "date": "2020-03-14",
         "type": "One to One",
         "duration": "30",
         "members": "4",
@@ -74,7 +74,7 @@
     {
         "eid": "5",
         "name": "Node.js Meetup",
-        "date": "2020-03-10",
+        "date": "2020-03-12",
         "type": "Group",
         "duration": "30",
         "members": "4",

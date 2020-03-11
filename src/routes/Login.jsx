@@ -97,7 +97,7 @@ export class Login extends Component {
                             />
                             <input
                               className="form-control form-control-lg my-2"
-                              type="text"
+                              type="password"
                               placeholder="Password"
                               onChange={this.handleChange}
                               value={logPass}
