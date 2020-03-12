@@ -63,7 +63,7 @@ function OpenEvents(props) {
               <div className="col-md-4">
                 <Link
                   to={`/dash/confirm/${elem}`}
-                  className="btn btn-outline-dark btn-block m-2"
+                  className="btn btn-outline-success btn-block m-2"
                 >
                   Book {new Date(elem).toLocaleTimeString()}
                 </Link>

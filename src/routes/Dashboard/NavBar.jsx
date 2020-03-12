@@ -5,6 +5,8 @@ import { logoutUser } from "../../redux/authentication/actions";
 // import styles from "./DashboardRoutes.module.css";
 
 const NavBar = props => {
+  let user = localStorage.getItem("logged");
+  user = JSON.parse(user);
   const logOut = () => {
     console.log("Logged Out");
     props.logoutUser();
@@ -50,7 +52,7 @@ const NavBar = props => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <i className="fas fa-arrow-circle-down" /> User Id
+              <i className="fas fa-arrow-circle-down" /> {user.regUsername}
             </div>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <button onClick={logOut} className="dropdown-item btn">
@@ -65,9 +67,5 @@ const NavBar = props => {
     </>
   );
 };
-
-// const mapDispatchToProps = dispatch => ({
-//   logoutUser: () => dispatch(logoutUser())
-// });
 
 export default connect(null, { logoutUser })(NavBar);

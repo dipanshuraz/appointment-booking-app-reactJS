@@ -1,14 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   let user = localStorage.getItem("logged");
   user = JSON.parse(user);
-  console.log(user);
+
   return (
-    <div>
+    <div className="container">
       <h1 className="text-center my-5">Profile</h1>
+
+      <div className="col-md-3 my-5">
+        <Link to="/dash/settings" className="btn btn-block btn-outline-dark">
+          Edit Profile
+        </Link>
+      </div>
       <div className="row p-0 m-0">
-        <div className="col-12 col-lg-4">
+        <div className="col-md-4 col-lg-4">
           <div className="text-center mb-5">
             <img
               src="https://via.placeholder.com/200"
@@ -24,7 +31,7 @@ const Profile = () => {
             </label>
           </div>
         </div>
-        <div className="col-12 col-lg-8 text-center">
+        <div className="col-md-8 col-lg-8 text-center">
           <p className="lead">Special Id : {user.id}</p>
           <h4 className="my-5">Username : {user.regUsername}</h4>
           <h4 className="my-5">+91 45567 34567</h4>
