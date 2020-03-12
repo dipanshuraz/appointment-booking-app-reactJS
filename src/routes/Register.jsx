@@ -30,6 +30,16 @@ export class Register extends Component {
 
   handleClick = () => {
     this.props.userRegister(this.state.regUser);
+    alert("Registration Successful");
+    this.setState({
+      ...this.state,
+      regUser: {
+        regUsername: "",
+        regEmail: "",
+        regType: "",
+        regPass: ""
+      }
+    });
   };
 
   render() {
@@ -87,7 +97,7 @@ export class Register extends Component {
                         </select>
                         <input
                           className="form-control form-control-lg my-2"
-                          type="text"
+                          type="password"
                           placeholder="Password"
                           onChange={this.handleChange}
                           value={this.state.regUser.regPass}
@@ -103,21 +113,21 @@ export class Register extends Component {
                       </div>
                     </form>
                   ) : (
-                      <>
-                        <button
-                          type="button"
-                          className="btn btn-lg btn-primary border btn-block text-left"
-                        >
-                          <i className="fab fa-google" /> Gmail
+                    <>
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-primary border btn-block text-left"
+                      >
+                        <i className="fab fa-google" /> Gmail
                       </button>
-                        <button
-                          type="button"
-                          className="btn btn-lg btn-secondary border btn-block text-left"
-                        >
-                          <i className="fab fa-facebook-f" /> Facebook
+                      <button
+                        type="button"
+                        className="btn btn-lg btn-secondary border btn-block text-left"
+                      >
+                        <i className="fab fa-facebook-f" /> Facebook
                       </button>
-                      </>
-                    )}
+                    </>
+                  )}
                 </div>
                 <div className="col-md-2 " />
               </div>
