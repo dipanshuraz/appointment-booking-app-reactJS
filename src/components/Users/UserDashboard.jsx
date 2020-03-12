@@ -1,32 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { Component } from "react";
+import { Link, Route, Switch } from "react-router-dom";
 import CurrentBooking from "./CurrentBooking";
 import PastBooking from "./PastBooking";
 import CurrentEvent from "./CurrentEvent";
 import UpcomingEvent from "./UpcomingEvent";
+import { connect } from "react-redux";
+import { fetchEvents } from "../../redux/User/action";
 
-class UserDashboard extends React.Component {
+export class UserDashboard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       page: "1",
       date: new Date().toLocaleDateString(),
-      event: []
+      todayEvent: []
     };
   }
 
-  componentDidMount() {
-    axios("/event.json")
-      .then(res => {
-        console.log(res);
-        this.setState({
-          event: res.data
-        });
-      })
-      .catch(error => console.log(error));
-  }
+  componentDidMount = async () => {
+    await this.props.fetchEvents();
+  };
 
   handleClick = a => {
     this.setState({
@@ -36,62 +30,70 @@ class UserDashboard extends React.Component {
   };
 
   render() {
-    console.log(this.state.page);
-    let content;
-    if (this.state.page === "1")
-      content = (
-        <CurrentEvent event={this.state.event} date={this.state.date} />
-      );
-    else if (this.state.page === "2")
-      content = (
-        <UpcomingEvent event={this.state.event} date={this.state.date} />
-      );
-    else if (this.state.page === "3") content = <CurrentBooking />;
-    else if (this.state.page === "4") content = <PastBooking />;
-
     return (
       <>
         <div className="container">
           <h1 className="text-center mt-5">User Dashboard</h1>
           <div className="d-flex justify-content-between bg-dark my-5">
             <div>
-              <button
+              <Link
+                to="/dash"
                 className="btn btn-outline-light btn-lg border-0 font-weight-bold"
                 type="button"
-                onClick={() => this.handleClick("1")}
               >
                 Current Event
-              </button>
-              <button
+              </Link>
+              <Link
+                to="/dash/upcoming-events"
                 className=" btn btn-outline-light btn-lg border-0 font-weight-bold"
                 type="button"
-                onClick={() => this.handleClick("2")}
               >
                 Upcoming Event
-              </button>
+              </Link>
             </div>
             <div>
-              <button
+              <Link
+                to="/dash/current-booking"
                 className=" btn btn-outline-light btn-lg border-0 font-weight-bold"
                 type="button"
-                onClick={() => this.handleClick("3")}
               >
                 Current Booking
-              </button>
-              <button
+              </Link>
+              <Link
+                to="/dash/past-booking"
                 className=" btn btn-outline-light btn-lg border-0 font-weight-bold"
                 type="button"
-                onClick={() => this.handleClick("4")}
               >
                 Past Booking
-              </button>
+              </Link>
             </div>
           </div>
         </div>
-        <div className="container">{content}</div>
+
+        <Switch>
+          <Route exact path="/dash" render={() => <CurrentEvent />} />
+          <Route
+            path="/dash/current-booking"
+            render={() => <CurrentBooking />}
+          />
+          <Route
+            path="/dash/upcoming-events"
+            render={() => <UpcomingEvent />}
+          />
+          <Route path="/dash/past-booking" render={() => <PastBooking />} />
+        </Switch>
       </>
     );
   }
 }
 
-export default UserDashboard;
+const mapStateToProps = state => ({
+  allUserEvents: state.userReducer.allUserEvents,
+  isLoading: state.userReducer.isLoading
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchEvents: () => dispatch(fetchEvents())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserDashboard);

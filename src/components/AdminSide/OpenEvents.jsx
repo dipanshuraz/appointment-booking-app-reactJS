@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { fetchEvents } from "../../redux/Admin/actions";
 
 function OpenEvents(props) {
   const [arr, setArr] = useState([]);
-  const [flag, setFlag] = useState(true);
-  const { fetchEvents, allEvents } = props;
+  const { allEvents } = props;
+
   useEffect(() => {
     fetchEvents();
   }, []);
@@ -33,7 +34,7 @@ function OpenEvents(props) {
     for (let i = eventStartTime; i < eventEndTime; i += duration) {
       if (count < slotsNum) {
         temp.push(i);
-        count++;
+        count += 1;
       }
     }
 
@@ -75,6 +76,10 @@ function OpenEvents(props) {
     </>
   );
 }
+
+OpenEvents.propTypes = {
+  allEvents: PropTypes.objectOf.isRequired
+};
 
 const mapStateToProps = state => ({
   allEvents: state.adminReducer.allEvents

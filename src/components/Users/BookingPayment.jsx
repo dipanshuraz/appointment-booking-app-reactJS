@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { addToBooked } from "../../redux/User/action";
 
 const BookingPayment = props => {
   console.log("payment", props);
@@ -122,16 +121,4 @@ const BookingPayment = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    event: state.userReducer.event,
-    details: state.userReducer.hold
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addToBooked: a => dispatch(addToBooked(a))
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(BookingPayment);
+export default BookingPayment;

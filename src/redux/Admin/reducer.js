@@ -38,7 +38,6 @@ const adminReducer = (state = initialState, action) => {
         isCreatingEvent: true
       };
     case CREATE_EVENTS_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         isCreatingEvent: false

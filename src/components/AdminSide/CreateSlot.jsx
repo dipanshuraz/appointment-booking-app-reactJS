@@ -18,7 +18,8 @@ export class CreateSlot extends Component {
         createActiveSlots: "",
         createEventDetails: "",
         createEventEnd: "",
-        createEventStart: ""
+        createEventStart: "",
+        createSlotDate: ""
       }
     };
   }
@@ -29,6 +30,7 @@ export class CreateSlot extends Component {
 
     const { regUsername, regEmail, id } = user;
     const userId = id;
+
     const { createEvent } = this.state;
     const obj = {
       ...createEvent,
@@ -41,10 +43,26 @@ export class CreateSlot extends Component {
   };
 
   handleClick = () => {
-    this.props.createSlot(this.state.createEvent);
+    const { createEvent } = this.state;
+    this.props.createSlot(createEvent);
   };
 
   render() {
+    const { createEvent } = this.state;
+    const {
+      createEventName,
+      createDuration,
+      createEventPrice,
+      createEventVenue,
+      createEventType,
+      createEventMembers,
+      createActiveSlots,
+      createEventDetails,
+      createEventEnd,
+      createEventStart,
+      createSlotDate
+    } = createEvent;
+
     return (
       <div className="container my-5 ">
         <h1 className="text-center text-secondary">Create Event</h1>
@@ -59,7 +77,7 @@ export class CreateSlot extends Component {
                     className="form-control form-control my-2"
                     id="exampleFormControlSelect1"
                     onChange={this.handleChange}
-                    value={this.state.createEvent.createEventType}
+                    value={createEventType}
                     name="createEventType"
                   >
                     <option value="">Select Type</option>
@@ -74,7 +92,7 @@ export class CreateSlot extends Component {
                       type="text"
                       className="form-control"
                       placeholder="0 -10"
-                      value={this.state.createEvent.createEventMembers}
+                      value={createEventMembers}
                       onChange={this.handleChange}
                       name="createEventMembers"
                     />
@@ -88,7 +106,7 @@ export class CreateSlot extends Component {
                     type="text"
                     className="form-control"
                     placeholder="John Doe"
-                    value={this.state.createEvent.createEventName}
+                    value={createEventName}
                     onChange={this.handleChange}
                     name="createEventName"
                   />
@@ -99,7 +117,7 @@ export class CreateSlot extends Component {
                     type="text"
                     className="form-control"
                     placeholder="30 min"
-                    value={this.state.createEvent.createDuration}
+                    value={createDuration}
                     onChange={this.handleChange}
                     name="createDuration"
                   />
@@ -110,7 +128,7 @@ export class CreateSlot extends Component {
                     type="text"
                     className="form-control"
                     placeholder="0 - 10"
-                    value={this.state.createEvent.createActiveSlots}
+                    value={createActiveSlots}
                     onChange={this.handleChange}
                     name="createActiveSlots"
                   />
@@ -122,7 +140,7 @@ export class CreateSlot extends Component {
                     id="exampleFormControlTextarea1"
                     rows="3"
                     name="contactMessage"
-                    value={this.state.createEventDetails}
+                    value={createEventDetails}
                     onChange={this.handleChange}
                     name="createEventDetails"
                   />
@@ -133,7 +151,7 @@ export class CreateSlot extends Component {
                     type="text"
                     className="form-control"
                     placeholder="₹ 200 "
-                    value={this.state.createEvent.createEventPrice}
+                    value={createEventPrice}
                     onChange={this.handleChange}
                     name="createEventPrice"
                   />
@@ -144,37 +162,40 @@ export class CreateSlot extends Component {
                     type="text"
                     className="form-control"
                     placeholder="Address"
-                    value={this.state.createEvent.createEventVenue}
+                    value={createEventVenue}
                     onChange={this.handleChange}
                     name="createEventVenue"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor=""> Date :</label>
+                  <label htmlFor="createSlotDate"> Date :</label>
                   <input
+                    id="createSlotDate"
                     type="Date"
                     className="form-control"
-                    value={this.state.createEvent.createSlotDate}
+                    value={createSlotDate}
                     onChange={this.handleChange}
                     name="createSlotDate"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="appt">Select Start Time:</label>
+                  <label htmlFor="createEventStart">Select Start Time:</label>
                   <input
+                    id="createEventStart"
                     type="time"
                     className="form-control"
-                    value={this.state.createEvent.createEventStart}
+                    value={createEventStart}
                     onChange={this.handleChange}
                     name="createEventStart"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="appt">Select End Time:</label>
+                  <label htmlFor="createEventEnd">Select End Time:</label>
                   <input
+                    id="createEventEnd"
                     type="time"
                     className="form-control"
-                    value={this.state.createEvent.createEventEnd}
+                    value={createEventEnd}
                     onChange={this.handleChange}
                     name="createEventEnd"
                   />
@@ -188,6 +209,7 @@ export class CreateSlot extends Component {
         </div>
         <Link to="/dash/confirm">
           <button
+            type="submit"
             onClick={this.handleClick}
             className="btn btn-success btn-block"
           >
@@ -199,10 +221,8 @@ export class CreateSlot extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
-
 const mapDispatchToProps = dispatch => ({
   createSlot: payload => dispatch(createSlot(payload))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateSlot);
+export default connect(null, mapDispatchToProps)(CreateSlot);

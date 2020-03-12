@@ -1,14 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { connect } from "react-redux";
 
 const BookingConfirmation = props => {
-  // let event = this.state.event.filter(ele => Number(ele.id) === Number(this.props.eid))
-  // console.log("confirmations page");
-  // console.log("confirmations", this.props);
-  // console.log(this.state);
-  // console.log(event);
   const content = props.event.map(ele => (
     <>
       <h3>Event Name:{ele.name}</h3>

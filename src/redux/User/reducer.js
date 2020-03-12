@@ -1,32 +1,38 @@
+import {
+  FETCH_EVENTS_REQ,
+  FETCH_EVENTS_SUCCESS,
+  FETCH_EVENTS_FAILS
+} from "./action";
+
 const initialState = {
-  hold: {},
-  event: {},
-  booked: []
+  allUserEvents: [],
+  isLoadingEvent: false,
+  isCreatingEvent: false
 };
 
-const reducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "HOLD_USER_DETAILS": {
+    case FETCH_EVENTS_REQ:
       return {
         ...state,
-        hold: { ...action.payload }
+        isLoadingEvent: true
       };
-    }
-    case "ADD_EVENT": {
+    case FETCH_EVENTS_SUCCESS:
       return {
         ...state,
-        event: action.payload
+        allUserEvents: action.payload,
+        isLoadingEvent: false
       };
-    }
-    case "ADD_TO_BOOKED": {
+
+    case FETCH_EVENTS_FAILS:
       return {
         ...state,
-        booked: [...state.booked, action.payload]
+        isLoadingEvent: false
       };
-    }
+
     default:
-      return { ...state };
+      return state;
   }
 };
 
-export default reducer;
+export default userReducer;

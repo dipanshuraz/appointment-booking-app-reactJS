@@ -30,7 +30,6 @@ export const loginUserFailure = payload => ({
 });
 
 export const loginUser = payload => dispatch => {
-  console.log(payload, "Hello");
   dispatch(loginUserRequest());
   return fBaseUsers
     .get()
@@ -39,7 +38,7 @@ export const loginUser = payload => dispatch => {
       query.forEach(doc => {
         array.push({ id: doc.id, ...doc.data() });
       });
-      console.log(array);
+
       const getUser = array.find(user => {
         if (
           user.regEmail === payload.logEmail &&

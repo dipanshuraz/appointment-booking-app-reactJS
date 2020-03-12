@@ -2,13 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../redux/authentication/actions";
-// import styles from "./DashboardRoutes.module.css";
 
 const NavBar = props => {
   let user = localStorage.getItem("logged");
   user = JSON.parse(user);
   const logOut = () => {
-    console.log("Logged Out");
     props.logoutUser();
   };
   return (

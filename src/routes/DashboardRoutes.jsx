@@ -14,23 +14,23 @@ import BookingConfirmation from "../components/Users/BookingConfirmation";
 import CreateOne from "../components/AdminSide/CreateSlot";
 import ConfirmSlots from "../components/AdminSide/ConfirmSlots";
 import CancelSlots from "../components/AdminSide/CancelSlots";
-import { fetchEvents, fetchSlots } from "../redux/Admin/actions";
 import OpenEvent from "../components/AdminSide/OpenEvents";
 
 const DashboardRoutes = props => {
-  useEffect(() => {
-    const { fetchEvents, fetchSlots } = props;
-    fetchEvents();
-    fetchSlots();
-  }, []);
+  let user = localStorage.getItem("logged");
+  user = JSON.parse(user);
 
   const { isAuth } = props;
-  console.log(isAuth);
+
   return isAuth ? (
     <>
       <Route path="/dash" component={NavBar} />
 
-      <Route path="/dash" exact render={() => <Dashboard />} />
+      {user.regType === "admin" ? (
+        <Route exact path="/dash" render={() => <Dashboard />} />
+      ) : (
+        <Route path="/dash" render={() => <Dashboard />} />
+      )}
       <Route
         exact
         path="/dash/book/:id"
@@ -72,9 +72,4 @@ const mapStateToProps = state => ({
   isAuth: state.authReducer.isAuth
 });
 
-const mapDispatchToProps = {
-  fetchEvents,
-  fetchSlots
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardRoutes);
+export default connect(mapStateToProps, null)(DashboardRoutes);

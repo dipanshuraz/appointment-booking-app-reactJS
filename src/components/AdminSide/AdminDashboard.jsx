@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import EventCard from "./EventCard";
+import { fetchEvents, fetchSlots } from "../../redux/Admin/actions";
 
 const AdminDashboard = props => {
-  let user = localStorage.getItem("logged");
-  user = JSON.parse(user);
   const { allEvents, isLoadingEvent } = props;
+  useEffect(() => {
+    const { fetchEvents, fetchSlots } = props;
+    fetchEvents();
+    fetchSlots();
+  }, []);
+
   return (
     <>
       <div className="container">
@@ -44,11 +50,20 @@ const AdminDashboard = props => {
     </>
   );
 };
+
+AdminDashboard.propTypes = {
+  allEvents: PropTypes.objectOf.isRequired,
+  isLoadingEvent: PropTypes.bool.isRequired
+};
+
 const mapStateToProps = state => ({
   allEvents: state.adminReducer.allEvents,
   isLoadingEvent: state.adminReducer.isLoadingEvent
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  fetchEvents,
+  fetchSlots
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);

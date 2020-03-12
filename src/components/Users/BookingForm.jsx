@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { holdUserDetail } from "../../redux/User/action";
 
 class BookingForm extends React.Component {
   constructor(props) {
@@ -107,14 +106,5 @@ class BookingForm extends React.Component {
     );
   }
 }
-// const mapStateToProps = (state) => ({
 
-// })
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addHold: a => dispatch(holdUserDetail(a))
-  };
-};
-
-export default connect(null, mapDispatchToProps)(BookingForm);
+export default connect(null, null)(BookingForm);

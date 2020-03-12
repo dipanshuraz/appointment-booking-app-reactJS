@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class UpcomingEvent extends React.Component {
   constructor(props) {
@@ -7,63 +8,32 @@ class UpcomingEvent extends React.Component {
   }
 
   render() {
-    const { event } = this.props;
-    const { date } = this.props;
+    const { allUserEvents } = this.props;
+    console.log(allUserEvents);
 
-    console.log(this.props.event);
-    console.log(this.props.date);
+    let upcoming_events = allUserEvents.filter(elem => {
+      let todayDate = new Date();
+      todayDate = todayDate.getDate();
 
-    // creating upcoming events arrays
-    const upcoming_events = event.filter(ele => {
-      // yyyy-mm-dd
-      const arr = ele.date
-        .trim()
-        .split("-")
-        .map(ele => Number(ele));
-      // chrome ->  dd/mm/yyyy  firefox --> mm/dd/yyyy
-      const today_date = date
-        .trim()
-        .split("/")
-        .map(ele => Number(ele));
-
-      // YYYY === YYYY    &&    MM  > MM
-      if (arr[0] === today_date[2] && arr[1] > today_date[1]) return ele;
-      if (arr[0] === today_date[2] && arr[1] === today_date[1]) {
-        // DD > DD
-        if (arr[2] > today_date[0]) return ele;
-      }
-
-      //    upcoming_events
-      console.log(today_date);
+      let date = elem.createSlotDate.split("-");
+      if (date[2] > todayDate) return elem;
     });
 
-    // Sorting upcoming events
-    upcoming_events.sort((a, b) => {
-      const arr1 = a.date.split("-").map(ele => Number(ele));
-      const arr2 = b.date.split("-").map(ele => Number(ele));
-
-      // comparing months
-      if (arr1[1] > arr2[1]) return a - b;
-      if (arr1[1] < arr2[1]) return b - a;
-
-      // comparing day
-      if (arr1[2] > arr2[2]) return a - b;
-      if (arr1[2] < arr2[2]) return b - a;
-    });
+    console.log(upcoming_events, "upcoming");
 
     // content template
     const content = upcoming_events.map(ele => (
-      <div className="card col-sm-12 col-md-6 col-lg-4" key={ele.id}>
+      <div className="card col-sm-12 col-md-6 col-lg-4" key={ele.slotId}>
         <div className="card-body">
           <h3 className="card-title text-danger text-center">{ele.name}</h3>
-          <h4 className="card-title text-center">{ele.type}</h4>
-          <h5 className="card-title text-center">{ele.date}</h5>
-          <h6 className="card-title text-center">{ele.venue}</h6>
+          <h4 className="card-title text-center">{ele.createEventType}</h4>
+          <h5 className="card-title text-center">{ele.createSlotDate}</h5>
+          <h6 className="card-title text-center">{ele.createEventVenue}</h6>
         </div>
         <div className="card-footer bg-white">
           <Link
             className="btn btn-outline-info btn-block"
-            to={`/dash/book/${ele.eid}`}
+            to={`/dash/book/${ele.slotId}`}
           >
             Book Now
           </Link>
@@ -81,4 +51,8 @@ class UpcomingEvent extends React.Component {
   }
 }
 
-export default UpcomingEvent;
+const mapStateToProps = state => ({
+  allUserEvents: state.userReducer.allUserEvents
+});
+
+export default connect(mapStateToProps, null)(UpcomingEvent);

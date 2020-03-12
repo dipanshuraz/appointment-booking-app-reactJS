@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
-import { addEvent } from "../../redux/User/action";
 
 class BookingSlot extends React.Component {
   constructor(props) {
@@ -203,10 +202,4 @@ class BookingSlot extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addEvent: e => dispatch(addEvent(e))
-  };
-};
-
-export default connect(null, mapDispatchToProps)(BookingSlot);
+export default connect(null, null)(BookingSlot);

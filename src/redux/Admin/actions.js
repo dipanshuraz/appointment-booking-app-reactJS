@@ -2,7 +2,8 @@ import { fBaseEvents, fBaseBooked } from "../../fbaseConfig";
 
 export const FETCH_EVENTS_REQ = "FETCH_SLOTS_REQ";
 export const FETCH_EVENTS_SUCCESS = "FETCH_SLOTS_SUCCESS";
-export const FETCH_EVENTS_FAILS = "FETCG_SLOTS_FAILS";
+export const FETCH_EVENTS_FAILS = "FETCH_SLOTS_FAILS";
+
 export const CREATE_EVENTS_REQ = "CREATE_SLOT_REQ";
 export const CREATE_EVENTS_SUCCESS = "CREATE_SLOT_SUCCESS";
 export const CREATE_EVENTS_FAIL = "CREATE_SLOT_FAIL";
@@ -55,7 +56,6 @@ export const createSlotFail = payload => ({
 export const createSlot = payload => dispatch => {
   dispatch(createSlotReq());
   return fBaseEvents.add(payload).then(res => {
-    console.log("created called");
     if (res.id) {
       dispatch(createEventsSuccess(res.status));
     }
@@ -84,7 +84,7 @@ export const fetchSlots = payload => dispatch => {
     query.forEach(doc => {
       slotsItem.push({ slotId: doc.id, userId: doc.id, ...doc.data() });
     });
-    console.log(slotsItem);
+
     // dispatch(fetchEventsSuccess(EventArray));
   });
 };
