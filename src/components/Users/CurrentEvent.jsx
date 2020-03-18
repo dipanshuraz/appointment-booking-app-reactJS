@@ -13,11 +13,11 @@ export class CurrentEvent extends Component {
     const { allUserEvents } = this.props;
     console.log(allUserEvents);
 
-    let todayArr = allUserEvents.filter(elem => {
+    const todayArr = allUserEvents.filter(elem => {
       let todayDate = new Date();
       todayDate = todayDate.getDate();
 
-      let date = elem.createSlotDate.split("-");
+      const date = elem.createSlotDate.split("-");
       if (date[2] == todayDate) return elem;
     });
 

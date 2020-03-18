@@ -11,11 +11,11 @@ class UpcomingEvent extends React.Component {
     const { allUserEvents } = this.props;
     console.log(allUserEvents);
 
-    let upcoming_events = allUserEvents.filter(elem => {
+    const upcoming_events = allUserEvents.filter(elem => {
       let todayDate = new Date();
       todayDate = todayDate.getDate();
 
-      let date = elem.createSlotDate.split("-");
+      const date = elem.createSlotDate.split("-");
       if (date[2] > todayDate) return elem;
     });
 

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 import CurrentBooking from "./CurrentBooking";
 import PastBooking from "./PastBooking";
 import CurrentEvent from "./CurrentEvent";
 import UpcomingEvent from "./UpcomingEvent";
-import { connect } from "react-redux";
 import { fetchEvents } from "../../redux/User/action";
 
 export class UserDashboard extends Component {
